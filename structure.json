@@ -1,7 +1,7 @@
 {
   "items": [
-    { "path": "scenario2" },
-    { "path": "course1", "title": "Override title of course ONE" },
-    { "path": "course2" }
+    { "path": "Debug scenario" },
+    { "path": "Docker", "title": "Docker scenarios" },
+    { "path": "Docker-compose" }
   ]
 }
