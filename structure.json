@@ -1,7 +1,7 @@
 {
   "items": [
-    { "path": "Debug scenario" },
+    { "path": "scenario2" },
     { "path": "Docker", "title": "Docker scenarios" },
-    { "path": "Docker-compose" }
+    { "path": "course1" }
   ]
 }
