@@ -1,0 +1,59 @@
+{
+  "title": "Use environment variables in a Container",
+  "description": "Use environment variables in a Container",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "init/background.sh",
+      "foreground": "init/foreground.sh"
+    },
+    "steps": [
+      {
+        "title": "Add ENV variable",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Update environment variable",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Add ENV variable",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Update environment variable",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Add ENV variable",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      },
+      {
+        "title": "Update environment variable",
+        "text": "step6/text.md",
+        "verify": "step6/verify.sh"
+      },
+      {
+        "title": "Add ENV variable",
+        "text": "step7/text.md",
+        "verify": "step7/verify.sh"
+      }
+    ],
+    "assets": {
+      "host01": [
+        {"file": "init.sh", "target": "/ks", "chmod": "+x"},
+        {"file": "k8s.sh", "target": "/ks", "chmod": "+x"},
+        {"file": "wait-init.sh", "target": "/ks", "chmod": "+x"},
+        {"file": "solution.sh", "target": "/var/run/kc-internal", "chmod": "+x"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

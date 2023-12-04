@@ -3,8 +3,9 @@
   "description": "Scenarios for docker course",
   "items": [
     { "path": "environment-variables", "title": "Environment variables"},
-    { "path": "scenario2", "title": "Volume mounts" },
-    { "path": "scenario3", "title": "Multi container app" },
-    { "path": "scenario4", "title": "Dockerfile best practices" }
+    { "path": "update-app", "title": "Update app"},
+    { "path": "volume-mounts", "title": "Volume mounts" },
+    { "path": "multi-container-app", "title": "Multi container app" },
+    { "path": "dockerfile-best-practices", "title": "Dockerfile best practices" }
   ]
 }
