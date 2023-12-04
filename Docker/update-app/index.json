@@ -1,6 +1,6 @@
 {
-  "title": "Use environment variables in a Container",
-  "description": "Use environment variables in a Container",
+  "title": "Update a container",
+  "description": "Update a container",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,12 +9,12 @@
     },
     "steps": [
       {
-        "title": "Add ENV variable",
+        "title": "Build a container",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Update environment variable",
+        "title": "Build an updated container",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       }

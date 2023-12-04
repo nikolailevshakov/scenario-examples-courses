@@ -1,1 +1,1 @@
-Build a container from scratch and run it
+Build and run a Docker container with environment variables.
