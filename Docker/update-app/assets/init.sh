@@ -12,8 +12,6 @@ mkdir -p /opt/ks
 
 # scenario specific
 
-sed 's/PORT/3000/g' /etc/killercoda/host
-
 cat >> /root/Dockerfile <<EOF
 FROM python:3.10-alpine
 
@@ -49,7 +47,7 @@ def hello():
     return index
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=3000)
 EOF
 
 podman run -d \
