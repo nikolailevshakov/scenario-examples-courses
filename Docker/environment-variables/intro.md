@@ -1,1 +1,1 @@
-Build and run a Docker container with environment variables.
+Build and run a container with environment variables.

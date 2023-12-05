@@ -1,5 +1,6 @@
 
-Run the container from the same image with env variable key2=value2 and key1=new-value1.
+Run the container `sample-app-2` from the same image `sample-image` with env variable key2=value2 and key1=new-value1.
+Doesn't change the Dockerfile.
 
 Check env variables inside the newly created container.
 
@@ -9,11 +10,7 @@ Check env variables inside the newly created container.
 <br>
 
 ```plain
-Dockerfile: List of commands from which an Image can be build
-
-Image: Binary file which includes all data/requirements to be run as a Container
-
-Container: Running instance of an Image
+Environment variables in Docker https://docs.docker.com/develop/develop-images/instructions/#env.
 ```
 
 </details>
@@ -23,7 +20,7 @@ Container: Running instance of an Image
 <br>
 
 ```plain
-use flag -e when running the container.
+Use -e flag when running the container.
 ```
 
 </details>
@@ -40,7 +37,7 @@ Run the image with new environment variables:
 <br>
 
 ```plain
-docker run -d —name sample-container2 -e key2=value2 -e key1=new-value1 sample-image
+docker run -d —name sample-app-2 -e key2=value2 -e key1=new-value1 sample-image
 ```
 
 <br>
@@ -50,5 +47,5 @@ List environment variables inside the container:
 <br>
 
 ```plain
-docker exec sample-container2 env
+docker exec sample-app-2 env
 ```{{exec}}
