@@ -1,1 +1,1 @@
-Build and run a Docker container with mounted volumes and binds.
+Build and run a container with mounted binds and volumes.

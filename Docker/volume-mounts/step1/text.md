@@ -1,7 +1,10 @@
 
-Run the container from the same image with env variable key2=value2 and key1=new-value1.
+Create a volume `sample-volume`.
 
-Check env variables inside the newly created container.
+Run the docker container named `sample-app` from image `alpine` with mounted volume.
+Volume's `type=volume`, host's directory - `/root/files`, container's directory - `/data/files`.
+
+Check if the file exists in the `/data/files` inside the container.
 
 
 <br>
@@ -9,11 +12,10 @@ Check env variables inside the newly created container.
 <br>
 
 ```plain
-Dockerfile: List of commands from which an Image can be build
 
-Image: Binary file which includes all data/requirements to be run as a Container
+Docs -https://docs.docker.com/storage/volumes/
 
-Container: Running instance of an Image
+Use docker volume --help - to see how to work with volumes.
 ```
 
 </details>
@@ -23,7 +25,7 @@ Container: Running instance of an Image
 <br>
 
 ```plain
-use flag -e when running the container.
+Use --mount flag when running the container.
 ```
 
 </details>
@@ -35,20 +37,30 @@ use flag -e when running the container.
 
 <br>
 
-Run the image with new environment variables:
+Create volume:
 
 <br>
 
 ```plain
-docker run -d —name sample-container2 -e key2=value2 -e key1=new-value1 sample-image
+docker volume create sample-volume.
 ```
 
 <br>
 
-List environment variables inside the container:
+Run the container with the mounted directory:
 
 <br>
 
 ```plain
-docker exec sample-container2 env
+docker run -d --mount type=volume,src=/root/files,target=/data/files --name sample-app alpine
+```{{exec}}
+
+<br>
+
+List files in the docker's mounted directory:
+
+<br>
+
+```plain
+docker exec sample-app ls /data/files
 ```{{exec}}
