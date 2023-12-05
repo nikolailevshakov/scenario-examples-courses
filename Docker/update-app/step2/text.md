@@ -7,7 +7,7 @@ Remove container `app`.
 
 Run the container `app` from the image `app/v2`. Expose port 5000.
 
-Curl localhost:5000.
+Curl localhost:3000.
 
 
 <br>
@@ -80,7 +80,7 @@ Run the container with exposed port 5000.
 <br>
 
 ```plain
-docker run -d -p 5000:5000 —name app app/v2 
+docker run -d -p 3000:3000 —name app app/v2 
 ```{{exec}}
 
 <br>

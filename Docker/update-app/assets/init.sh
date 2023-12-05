@@ -30,7 +30,7 @@ cat >> /root/index.html <<EOF
 <h1>Hello, from the app/v1</h1>
 EOF
 
-cat >> /root/requirements.html <<EOF
+cat >> /root/requirements.txt <<EOF
 flask
 EOF
 
