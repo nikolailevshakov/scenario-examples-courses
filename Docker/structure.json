@@ -4,7 +4,8 @@
   "items": [
     { "path": "environment-variables", "title": "Environment variables"},
     { "path": "update-app", "title": "Update app"},
-    { "path": "volume-mounts", "title": "Volume mounts" },
+    { "path": "volumes", "title": "Volumes" },
+    { "path": "bind-mounts", "title": "Bind-mounts" },
     { "path": "multi-container-app", "title": "Multi container app" },
     { "path": "dockerfile-best-practices", "title": "Dockerfile best practices" }
   ]

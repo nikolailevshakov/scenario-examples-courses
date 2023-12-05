@@ -11,43 +11,9 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
-cat >> /root/Dockerfile <<EOF
-FROM python:3.10-alpine
 
-WORKDIR /app
-
-COPY requirements.txt /app
-RUN pip3 install -r requirements.txt
-
-COPY . /app
-EXPOSE 5000
-
-ENTRYPOINT ["python3"]
-CMD ["app.py"]
-EOF
-
-cat >> /root/index.html <<EOF
-<h1>Hello, from the app/v1</h1>
-EOF
-
-cat >> /root/requirements.html <<EOF
-flask
-EOF
-
-cat >> /root/app.py <<EOF
-from flask import Flask
-app = Flask(__name__)
-
-@app.route('/')
-def hello():
-    f = open("index.html", "r")
-    index = f.read()
-    f.close()
-    return index
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
-EOF
+mkdir /root/files
+echo "Application's data" > /root/files/file1.txt
 
 podman run -d \
   --restart=always \

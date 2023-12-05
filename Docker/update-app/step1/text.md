@@ -1,5 +1,9 @@
 
-Build docker image app/v1 from Dockerfile, run the container, check logs of the container.
+Build docker image `app/v1` from `/root/Dockerfile`.
+
+Run the container `app` from the created image. Expose port 5000.
+
+Curl localhost:5000.
 
 
 <br>
@@ -7,11 +11,9 @@ Build docker image app/v1 from Dockerfile, run the container, check logs of the 
 <br>
 
 ```plain
-Dockerfile: List of commands from which an Image can be build
 
-Image: Binary file which includes all data/requirements to be run as a Container
+To run container with exposed port use -p flag.
 
-Container: Running instance of an Image
 ```
 
 </details>
@@ -21,7 +23,8 @@ Container: Running instance of an Image
 <br>
 
 ```plain
-Use docker build, docker run and docker logs commands. User -h flag to see the help.
+Use `docker build` and `docker run` commands. 
+Use --help flag to see the help.
 ```
 
 </details>
@@ -33,7 +36,7 @@ Use docker build, docker run and docker logs commands. User -h flag to see the h
 
 <br>
 
-Add next line to the `/root/Dockerfile`:
+Build app/v1 image
 
 <br>
 
@@ -43,20 +46,22 @@ docker build -t app/v1 .
 
 <br>
 
-Build the image:
+Run the container with exposed port 5000.
 
 <br>
 
 ```plain
-docker run -d —name app app/v1 
+docker run -d -p 5000:5000 —name app app/v1 
 ```{{exec}}
 
 <br>
 
-Run the image:
+Curl localhost:5000:
 
 <br>
 
 ```plain
-docker logs app
+curl localhost:5000
 ```{{exec}}
+
+<br>

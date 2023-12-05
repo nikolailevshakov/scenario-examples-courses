@@ -13,9 +13,8 @@ set -e # exit once any command fails
 {
     date
 
-    docker image ls | grep app/v1
-    docker ps | grep app
-    curl localhost:5000 | grep "Hello, from the app/v1"
+    docker exec sample-app-2 ls /home/files/
+    docker ps | grep sample-app-2
 
 } >> ${LOGFILE} 2>&1
 

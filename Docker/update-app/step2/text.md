@@ -1,7 +1,13 @@
 
-Run the container from the same image with env variable key2=value2 and key1=new-value1.
+Append line `<h2>Some updates for app/v2</h2>` to index.html file.
 
-Check env variables inside the newly created container.
+Build docker image `app/v2` from `/root/Dockerfile`.
+
+Remove container `app`.
+
+Run the container `app` from the image `app/v2`. Expose port 5000.
+
+Curl localhost:5000.
 
 
 <br>
@@ -9,11 +15,9 @@ Check env variables inside the newly created container.
 <br>
 
 ```plain
-Dockerfile: List of commands from which an Image can be build
 
-Image: Binary file which includes all data/requirements to be run as a Container
+To run container with exposed port use -p flag.
 
-Container: Running instance of an Image
 ```
 
 </details>
@@ -23,7 +27,9 @@ Container: Running instance of an Image
 <br>
 
 ```plain
-use flag -e when running the container.
+Use >> to append line to the file.
+Use `docker build` and `docker run` commands. 
+Use --help flag to see the help.
 ```
 
 </details>
@@ -35,20 +41,56 @@ use flag -e when running the container.
 
 <br>
 
-Run the image with new environment variables:
+Append line `<h2>Some updates for app/v2</h2>` to index.html file:
 
 <br>
 
 ```plain
-docker run -d —name sample-container2 -e key2=value2 -e key1=new-value1 sample-image
-```
-
-<br>
-
-List environment variables inside the container:
-
-<br>
-
-```plain
-docker exec sample-container2 env
+echo "<h2>Some updates for app/v2</h2>" >> /root/index.html
 ```{{exec}}
+
+
+<br>
+
+Build app/v2 image
+
+<br>
+
+```plain
+docker build -t app/v2 .
+```{{exec}}
+
+<br>
+
+Delete container app created from the image app/v1:
+
+<br>
+
+```plain
+docker rm -f app
+or
+docker stop app && docker rm app
+```{{exec}}
+
+
+<br>
+
+Run the container with exposed port 5000.
+
+<br>
+
+```plain
+docker run -d -p 5000:5000 —name app app/v2 
+```{{exec}}
+
+<br>
+
+Curl localhost:5000:
+
+<br>
+
+```plain
+curl localhost:5000
+```{{exec}}
+
+<br>

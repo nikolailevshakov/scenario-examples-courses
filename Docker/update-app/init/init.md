@@ -1,1 +1,1 @@
-Build and run a Docker container
+Run updated version of the image.

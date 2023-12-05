@@ -13,10 +13,9 @@ set -e # exit once any command fails
 {
     date
 
-    docker image ls | grep sample-image
-    docker ps | grep sample-container2
-    docker exec sample-container2 env | grep key1=new-value1
-    docker exec sample-container2 env | grep key2=value2
+    docker image ls | grep app/v2
+    docker ps | grep app
+    curl localhost:5000 | grep "Some updates for app/v2"
 
 } >> ${LOGFILE} 2>&1
 
