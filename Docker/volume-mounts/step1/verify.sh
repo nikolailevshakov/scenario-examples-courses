@@ -13,10 +13,9 @@ set -e # exit once any command fails
 {
     date
 
-    docker image ls | grep nginx
+    docker image ls | grep nginx:alpine
     docker ps | grep sample-app
-    docker exec sample-app ls /data/files | grep file1.txt
-    ls /root/files | grep file1.txt
+    docker exec sample-app ls /home/files | grep container-data.txt
 
 } >> ${LOGFILE} 2>&1
 

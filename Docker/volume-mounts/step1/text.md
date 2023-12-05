@@ -1,10 +1,16 @@
 
 Create a volume `sample-volume`.
 
-Run the docker container named `sample-app` from image `alpine` with mounted volume.
-Volume's `type=volume`, host's directory - `/root/files`, container's directory - `/data/files`.
+Run the docker container named `sample-app` from image `nginx:alpine` with mounted volume.
+Volume's `type=volume`, src - `sample-volume`, container's directory - `/home/files`.
 
-Check if the file exists in the `/data/files` inside the container.
+Create `container-data.txt` inside the container `/home/files` directory.
+
+Remove the `sample-app` container.
+
+Create the `sample-app` container with the same mounted volume.
+
+Check if the file exists in the `/home/files` inside the container.
 
 
 <br>
@@ -12,10 +18,9 @@ Check if the file exists in the `/data/files` inside the container.
 <br>
 
 ```plain
+Docs - https://docs.docker.com/storage/volumes/
 
-Docs -https://docs.docker.com/storage/volumes/
-
-Use docker volume --help - to see how to work with volumes.
+Use `docker volume --help` - to see how to work with volumes.
 ```
 
 </details>
@@ -25,7 +30,10 @@ Use docker volume --help - to see how to work with volumes.
 <br>
 
 ```plain
-Use --mount flag when running the container.
+Use `--mount` flag when running the container.
+
+If you want to see where on the host the created volume is mounted use:
+`docker volume inspect sample-volume` command.
 ```
 
 </details>
@@ -42,8 +50,9 @@ Create volume:
 <br>
 
 ```plain
-docker volume create sample-volume.
-```
+docker volume create sample-volume
+```{{exec}}
+
 
 <br>
 
@@ -52,15 +61,49 @@ Run the container with the mounted directory:
 <br>
 
 ```plain
-docker run -d --mount type=volume,src=/root/files,target=/data/files --name sample-app alpine
+docker run -d --mount type=volume,src=sample-volume,target=/home/files --name sample-app nginx:alpine
 ```{{exec}}
 
 <br>
 
-List files in the docker's mounted directory:
+Create `container-data.txt` inside the container's /home/files directory:
 
 <br>
 
 ```plain
-docker exec sample-app ls /data/files
+
+docker exec sample-app touch /home/files/container-data.txt
+
+```
+
+<br>
+
+Remove the `sample-app` container:
+
+<br>
+
+```plain
+docker rm -f sample-app
+Or
+docker stop sample app && docker rm sample-app
+```{{exec}}
+
+<br>
+
+Run the container `sample-app` again with the same mounted volume:
+
+<br>
+
+```plain
+docker run -d --mount type=volume,src=sample-volume,target=/home/files --name sample-app nginx:alpine
+```{{exec}}
+
+<br>
+
+List files in the mounted `/home/files` directory inside the container `sample-app`:
+
+<br>
+
+```plain
+docker exec sample-app ls /home/files
 ```{{exec}}

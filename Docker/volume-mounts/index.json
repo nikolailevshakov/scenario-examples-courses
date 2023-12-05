@@ -14,17 +14,17 @@
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Change file in the mounted volume",
+        "title": "Run container with -v flag",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },
       {
-        "title": "Run container with -v flag",
+        "title": "Change file in the mounted volume",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
       },
       {
-        "title": "Change file in the mounted volume",
+        "title": "Bind volume",
         "text": "step4/text.md",
         "verify": "step4/verify.sh"
       }

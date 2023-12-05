@@ -13,8 +13,8 @@ set -e # exit once any command fails
 {
     date
 
-    docker ps | grep sample-app
-    cat /root/files/file1.txt | grep "Container's runtime data"
+    docker exec sample-app-2 ls /home/files/
+    docker ps | grep sample-app-2
 
 } >> ${LOGFILE} 2>&1
 

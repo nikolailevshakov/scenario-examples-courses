@@ -1,5 +1,5 @@
 
-Create Dockerfile with `alpine` image and environment variable `key1=value1``.
+Create Dockerfile with `nginx:alpine` image and environment variable `key1=value1``.
 
 Build the image and tag it as `sample-image`.
 
@@ -47,7 +47,7 @@ Create `/root/Dockerfile`:
 <br>
 
 ```plain
-FROM alpine
+FROM nginx:alpine
 ENV key1=value1
 ```
 

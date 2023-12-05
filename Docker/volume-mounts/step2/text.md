@@ -1,15 +1,11 @@
 
-Append `Container's runtime data` line to the file inside the `sample-app` container `/data/files/file1.txt`
+Run a container `sample-app-2` with mounted volume (using -v), with image `nginx:alpine`.
+Host's directory - `/root/files`, container's directory - `/home/files`.
 
-Check the data inside file1.txt on the host.
+List files inside the container in the mounted directory.
 
-Append `Host's new data` line to the file on the host `/root/files/file1.txt`
+Inspect created volume.
 
-Check the data inside file1.txt in the container.
-
-Remove sample-app container.
-
-Check the data inside file1.txt on the host.
 
 <br>
 <details><summary>Info</summary>
@@ -19,6 +15,9 @@ Check the data inside file1.txt on the host.
 Docs https://docs.docker.com/storage/volumes/
 
 Volume - allow to persist container's data.
+
+In this task we basically doing the same that we did on the previous step.
+But as we don't create volume implicitly, we provide the path for the host's mounted point.
 ```
 
 </details>
@@ -28,9 +27,7 @@ Volume - allow to persist container's data.
 <br>
 
 ```plain
-Use -f flag to force deletion of the running container.
-
-Use `>>` to append line to the file.
+Use flag -v when running the container.
 ```
 
 </details>
@@ -42,67 +39,30 @@ Use `>>` to append line to the file.
 
 <br>
 
-Append the line  `Container's runtime data` to the file1 inside the container:
+Run the container with mounted volume:
 
 <br>
 
 ```plain
-docker exec sample-app echo "Container's runtime data" >> /data/files/file1.txt
+docker run -d --name sample-app-2 -v /root/files:/home/files nginx:alpine
 ```
 
 <br>
 
-Cat `file1.txt` on the host:
+List files inside the mounted directory in the container:
 
 <br>
 
 ```plain
-cat /root/files/file1.txt
+docker exec sample-app-2 ls /home/files
 ```{{exec}}
 
 <br>
 
-Append the line  `Host's new data` to the file1 on the host:
+Inspect created volume:
 
 <br>
 
 ```plain
-echo "Host's new data" >> /root/files/file1.txt
+docker volume inspect 
 ```{{exec}}
-
-<br>
-
-Cat `file1.txt` in the container:
-
-<br>
-
-```plain
-docker exec sample-app cat /data/files/file1.txt
-```{{exec}}
-
-<br>
-
-Remove sample-app container:
-
-<br>
-
-```plain
-docker rm -f sample-app
-
-Or
-
-docker stop sample-app && docker rm sample-app
-```{{exec}}
-
-<br>
-
-Cat `file1.txt` on the host:
-
-<br>
-
-```plain
-cat /root/files/file1.txt
-```{{exec}}
-
-
-</details>
