@@ -1,5 +1,5 @@
 
-Run the container `sample-app-2` from the same image `sample-image` with env variable key2=value2 and key1=new-value1.
+Run the container `sample-app-2` from the same image `sample-image` with env variable `key2=value2` and `key1=new-value1`.
 Doesn't change the Dockerfile.
 
 Check env variables inside the newly created container.
@@ -10,7 +10,8 @@ Check env variables inside the newly created container.
 <br>
 
 ```plain
-Environment variables in Docker https://docs.docker.com/develop/develop-images/instructions/#env.
+Environment variables in Docker:
+https://docs.docker.com/develop/develop-images/instructions/#env.
 ```
 
 </details>

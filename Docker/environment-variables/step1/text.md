@@ -1,11 +1,11 @@
 
-Create Dockerfile with `nginx:alpine` image and environment variable key1=value1.
+Create Dockerfile with `nginx:alpine` image and environment variable `key1=value1``.
 
 Build the image and tag it as `sample-image`.
 
 Create a container named `sample-app`.
 
-Check if environment variable key1=value1 is exists inside the container.
+Check if environment variable `key1=value1` exists inside the container.
 
 
 <br>
