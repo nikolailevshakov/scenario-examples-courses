@@ -11,9 +11,7 @@ Curl localhost:3000.
 <br>
 
 ```plain
-
 To run container with exposed port use -p flag.
-
 ```
 
 </details>
@@ -23,7 +21,8 @@ To run container with exposed port use -p flag.
 <br>
 
 ```plain
-Use `docker build` and `docker run` commands. 
+Use docker build and docker run commands. 
+
 Use --help flag to see the help.
 ```
 
@@ -42,7 +41,7 @@ Build app/v1 image
 
 ```plain
 docker build -t app/v1 .
-```
+```{{exec}}
 
 <br>
 
@@ -51,7 +50,7 @@ Run the container with exposed port 3000.
 <br>
 
 ```plain
-docker run -d -p 5000:5000 —name app app/v1 
+docker run -d -p 3000:3000 --name app app/v1 
 ```{{exec}}
 
 <br>

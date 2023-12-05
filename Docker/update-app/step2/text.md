@@ -5,7 +5,7 @@ Build docker image `app/v2` from `/root/Dockerfile`.
 
 Remove container `app`.
 
-Run the container `app` from the image `app/v2`. Expose port 5000.
+Run the container `app` from the image `app/v2`. Expose port 3000.
 
 Curl localhost:3000.
 
@@ -80,17 +80,17 @@ Run the container with exposed port 5000.
 <br>
 
 ```plain
-docker run -d -p 3000:3000 —name app app/v2 
+docker run -d -p 3000:3000 --name app app/v2 
 ```{{exec}}
 
 <br>
 
-Curl localhost:5000:
+Curl localhost:3000:
 
 <br>
 
 ```plain
-curl localhost:5000
+curl localhost:3000
 ```{{exec}}
 
 <br>
