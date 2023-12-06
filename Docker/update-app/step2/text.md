@@ -75,7 +75,7 @@ docker stop app && docker rm app
 
 <br>
 
-Run the container with exposed port 5000.
+Run the container with exposed port 3000.
 
 <br>
 

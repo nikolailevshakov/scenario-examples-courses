@@ -39,7 +39,7 @@ Run the image with new environment variables:
 
 ```plain
 docker run -d —name sample-app-2 -e key2=value2 -e key1=new-value1 sample-image
-```
+```{{exec}}
 
 <br>
 

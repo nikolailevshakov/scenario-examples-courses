@@ -1,6 +1,6 @@
 {
-  "title": "Use environment variables in a Container",
-  "description": "Use environment variables in a Container",
+  "title": "Run docker container with environment variables",
+  "description": "Run docker container with environment variables",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,12 +9,12 @@
     },
     "steps": [
       {
-        "title": "Using ENV key word",
+        "title": "Build docker image using ENV key word",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Update environment variable",
+        "title": "Run docker image with environment variables",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       }

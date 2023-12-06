@@ -17,6 +17,8 @@ set -e # exit once any command fails
     docker ps | grep sample-app-2
     docker exec sample-app-2 env | grep key1=new-value1
     docker exec sample-app-2 env | grep key2=value2
+    cat /root/Dockerfile | grep -v key1=new-value1
+    cat /root/Dockerfile | grep -v key2=value2
 
 } >> ${LOGFILE} 2>&1
 

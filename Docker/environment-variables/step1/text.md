@@ -47,9 +47,11 @@ Create `/root/Dockerfile`:
 <br>
 
 ```plain
+cat <<EOF >> /root/Dockerfile
 FROM nginx:alpine
 ENV key1=value1
-```
+EOF
+```{{exec}}
 
 <br>
 
@@ -63,7 +65,7 @@ docker build -t sample-image .
 
 <br>
 
-Run the image:
+Run the container:
 
 <br>
 
