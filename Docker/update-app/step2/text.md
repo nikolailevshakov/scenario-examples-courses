@@ -1,5 +1,5 @@
 
-Append line `<h2>Some updates for app/v2</h2>` to index.html file.
+Append line `<h2>Some updates for app/v2</h2>` to `/root/index.html` file.
 
 Build docker image `app/v2` from `/root/Dockerfile`.
 
@@ -7,7 +7,7 @@ Remove container `app`.
 
 Run the container `app` from the image `app/v2`. Expose port 3000.
 
-Curl localhost:3000.
+Make a request to localhost:3000.
 
 
 <br>
@@ -28,7 +28,9 @@ To run container with exposed port use -p flag.
 
 ```plain
 Use >> to append line to the file.
-Use `docker build` and `docker run` commands. 
+
+Use `docker build` and `docker run` commands.
+
 Use --help flag to see the help.
 ```
 
@@ -41,7 +43,7 @@ Use --help flag to see the help.
 
 <br>
 
-Append line `<h2>Some updates for app/v2</h2>` to index.html file:
+Append line <h2>Some updates for app/v2</h2> to index.html file:
 
 <br>
 
@@ -52,7 +54,7 @@ echo "<h2>Some updates for app/v2</h2>" >> /root/index.html
 
 <br>
 
-Build app/v2 image
+Build app/v2 image:
 
 <br>
 
@@ -68,7 +70,7 @@ Delete container app created from the image app/v1:
 
 ```plain
 docker rm -f app
-or
+OR
 docker stop app && docker rm app
 ```{{exec}}
 
@@ -85,7 +87,7 @@ docker run -d -p 3000:3000 --name app app/v2
 
 <br>
 
-Curl localhost:3000:
+Make a request to localhost:3000:
 
 <br>
 

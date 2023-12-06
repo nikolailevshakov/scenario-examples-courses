@@ -3,10 +3,11 @@
   "description": "Scenarios for docker course",
   "items": [
     { "path": "environment-variables", "title": "Environment variables"},
-    { "path": "update-app", "title": "Update app"},
+    { "path": "update-app", "title": "Update the application"},
     { "path": "volumes", "title": "Volumes" },
     { "path": "bind-mounts", "title": "Bind-mounts" },
     { "path": "multi-container-app", "title": "Multi container app" },
-    { "path": "dockerfile-best-practices", "title": "Dockerfile best practices" }
+    { "path": "dockerfile-best-practices", "title": "Dockerfile best practices" },
+    { "path": "network", "title": "Network in Docker"}
   ]
 }

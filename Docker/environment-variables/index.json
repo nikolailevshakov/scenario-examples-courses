@@ -14,7 +14,7 @@
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Run docker image with environment variables",
+        "title": "Overwrite environment variable",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       }

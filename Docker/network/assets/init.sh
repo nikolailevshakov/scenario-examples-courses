@@ -11,6 +11,9 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
+cat >> /root/Dockerfile <<EOF
+FROM nginx
+EOF
 
 podman run -d \
   --restart=always \

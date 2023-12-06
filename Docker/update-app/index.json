@@ -9,12 +9,12 @@
     },
     "steps": [
       {
-        "title": "Build a container",
+        "title": "Containerize an application",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Build an updated container",
+        "title": "Containerize an updated application",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       }

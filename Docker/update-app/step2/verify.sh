@@ -15,7 +15,10 @@ set -e # exit once any command fails
 
     docker image ls | grep app/v2
     docker ps | grep app
-    curl localhost:5000 | grep "Some updates for app/v2"
+    cat /root/index.html | grep "Hello, from the app/v1"
+    cat /root/index.html | grep "Some updates for app/v2"
+    curl localhost:3000 | grep "Some updates for app/v2"
+    curl localhost:3000 | grep "Hello, from the app/v1"
 
 } >> ${LOGFILE} 2>&1
 

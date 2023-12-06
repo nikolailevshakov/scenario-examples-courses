@@ -1,9 +1,9 @@
 
 Build docker image `app/v1` from `/root/Dockerfile`.
 
-Run the container `app` from the created image. Expose port 5000.
+Run the container named `app` from the created image. Expose port 3000.
 
-Curl localhost:3000.
+Make a request to localhost:3000.
 
 
 <br>
@@ -35,7 +35,7 @@ Use --help flag to see the help.
 
 <br>
 
-Build app/v1 image
+Build app/v1 image:
 
 <br>
 
@@ -45,7 +45,7 @@ docker build -t app/v1 .
 
 <br>
 
-Run the container with exposed port 3000.
+Launch the container while making port 3000 accessible::
 
 <br>
 
@@ -55,7 +55,7 @@ docker run -d -p 3000:3000 --name app app/v1
 
 <br>
 
-Curl localhost:3000:
+Make a request to localhost:3000:
 
 <br>
 
