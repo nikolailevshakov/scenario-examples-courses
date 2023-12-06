@@ -11,10 +11,6 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
-
-mkdir /root/files
-echo "Application's data" > /root/files/file1.txt
-
 podman run -d \
   --restart=always \
   --name registry \

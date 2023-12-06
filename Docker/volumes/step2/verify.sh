@@ -13,8 +13,9 @@ set -e # exit once any command fails
 {
     date
 
-    docker exec sample-app-2 ls /home/files/
     docker ps | grep sample-app-2
+    docker volume ls | grep sample-volume
+    curl localhost:80 | grep "<h1>Hello from the updated App</h1>"
 
 } >> ${LOGFILE} 2>&1
 

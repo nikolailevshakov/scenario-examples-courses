@@ -1,17 +1,15 @@
 
-Create a volume `sample-volume`.
+Create docker volume named `sample-volume`.
 
-Run the docker container named `sample-app` from image `nginx:alpine` with mounted volume.
-Volume's `type=volume`, src - `sample-volume`, container's directory - `/home/files`.
+Run the docker container named `sample-app` from image `nginx:alpine` 
+mounted on `sample-volume` on the host and on `/usr/share/nginx/html` directory in the container.
+Expose port 80.
 
-Create `container-data.txt` inside the container `/home/files` directory.
+Request localhost:80.
 
-Remove the `sample-app` container.
+Rewrite /usr/share/nginx/html/index.html file with `<h1>Hello from the updated App</h1>`
 
-Create the `sample-app` container with the same mounted volume.
-
-Check if the file exists in the `/home/files` inside the container.
-
+Remove sample-app container.
 
 <br>
 <details><summary>Info</summary>
@@ -30,10 +28,9 @@ Use `docker volume --help` - to see how to work with volumes.
 <br>
 
 ```plain
-Use `--mount` flag when running the container.
+Use --mount flag when running the container to be more explicit (it's a recommended way according to the documentation).
 
-If you want to see where on the host the created volume is mounted use:
-`docker volume inspect sample-volume` command.
+Or use -v flag for a more concise command.
 ```
 
 </details>
@@ -61,18 +58,28 @@ Run the container with the mounted directory:
 <br>
 
 ```plain
-docker run -d --mount type=volume,src=sample-volume,target=/home/files --name sample-app nginx:alpine
+docker run -d -p 80:80 --mount type=volume,src=sample-volume,target=/usr/share/nginx/html --name sample-app nginx:alpine
 ```{{exec}}
 
 <br>
 
-Create `container-data.txt` inside the container's /home/files directory:
+Request localhost:80:
+
+<br>
+
+```plain
+curl localhost:80
+```{{exec}}
+
+<br>
+
+Rewrite index.html file:
 
 <br>
 
 ```plain
 
-docker exec sample-app touch /home/files/container-data.txt
+docker exec app echo "<h1>Hello from the updated App</h1>" > /usr/share/nginx/index.html
 
 ```
 
@@ -86,24 +93,4 @@ Remove the `sample-app` container:
 docker rm -f sample-app
 Or
 docker stop sample app && docker rm sample-app
-```{{exec}}
-
-<br>
-
-Run the container `sample-app` again with the same mounted volume:
-
-<br>
-
-```plain
-docker run -d --mount type=volume,src=sample-volume,target=/home/files --name sample-app nginx:alpine
-```{{exec}}
-
-<br>
-
-List files in the mounted `/home/files` directory inside the container `sample-app`:
-
-<br>
-
-```plain
-docker exec sample-app ls /home/files
-```{{exec}}
+```{{copy}}
