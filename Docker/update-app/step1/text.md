@@ -1,5 +1,5 @@
 
-Build docker image `app/v1` from `/root/Dockerfile`.
+Build docker image named `app/v1` from `/root/Dockerfile`.
 
 Run the container named `app` from the created image. Expose port 3000.
 

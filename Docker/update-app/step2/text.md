@@ -15,9 +15,7 @@ Make a request to localhost:3000.
 <br>
 
 ```plain
-
 To run container with exposed port use -p flag.
-
 ```
 
 </details>
@@ -29,7 +27,7 @@ To run container with exposed port use -p flag.
 ```plain
 Use >> to append line to the file.
 
-Use `docker build` and `docker run` commands.
+Use docker build and docker run commands.
 
 Use --help flag to see the help.
 ```
@@ -72,7 +70,7 @@ Delete container app created from the image app/v1:
 docker rm -f app
 OR
 docker stop app && docker rm app
-```{{exec}}
+```{{copy}}
 
 
 <br>

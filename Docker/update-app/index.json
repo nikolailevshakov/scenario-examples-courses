@@ -1,6 +1,6 @@
 {
-  "title": "Update a container",
-  "description": "Update a container",
+  "title": "Update containerized application",
+  "description": "Update containerized application",
   "details": {
     "intro": {
       "text": "intro.md",
