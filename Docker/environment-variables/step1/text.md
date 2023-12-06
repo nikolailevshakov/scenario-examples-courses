@@ -1,5 +1,5 @@
 
-Create Dockerfile with `nginx:alpine` image and environment variable `key1=value1``.
+Create Dockerfile with `nginx:alpine` image and environment variable `key1=value1`.
 
 Build the image and tag it as `sample-image`.
 
@@ -13,11 +13,11 @@ Check if environment variable `key1=value1` exists inside the container.
 <br>
 
 ```plain
-Dockerfile: List of commands from which an Image can be build
+Dockerfile: List of commands from which an Image can be build.
 
-Image: Binary file which includes all data/requirements to be run as a Container
+Image: Binary file which includes all data/requirements to be run as a Container.
 
-Container: Running instance of an Image
+Container: Running instance of an Image.
 
 Use docker --help to see the list of commands.
 ```
@@ -29,7 +29,7 @@ Use docker --help to see the list of commands.
 <br>
 
 ```plain
-Use ENV key word.
+Use ENV key word to define environment variables in Dockerfile.
 Use -d (detached) flag when running the container.
 ```
 
