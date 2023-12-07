@@ -15,7 +15,7 @@ set -e # exit once any command fails
 
     docker image ls | grep nginx:alpine
     docker volume ls | grep sample-volume
-    docker volume inspect sample-volume | grep volume
+    cat /var/lib/docker/volumes/sample-volume/_data/index.html | grep "<h1>Hello from the updated App</h1>
 
 } >> ${LOGFILE} 2>&1
 

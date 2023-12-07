@@ -78,10 +78,18 @@ Rewrite index.html file:
 <br>
 
 ```plain
+docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/share/nginx/html/index.html"
+```{{exec}}
 
-docker exec app echo "<h1>Hello from the updated App</h1>" > /usr/share/nginx/index.html
+<br>
 
-```
+Request localhost:80:
+
+<br>
+
+```plain
+curl localhost:80
+```{{exec}}
 
 <br>
 
