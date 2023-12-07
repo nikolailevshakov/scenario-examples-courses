@@ -1,19 +1,17 @@
 
-Run the docker container named `sample-app` from the same image `nginx:alpine` 
-mounted on /home/app-data on the host and on `/usr/share/nginx/html` directory in the container.
-Expose port 80.
+Create /usr/share/nginx/html/index.html file with `<h1>Hello from the updated App</h1>`
 
 Request localhost:80.
 
+Remove sample-app container.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Docs https://docs.docker.com/storage/volumes/
+Bind mount is not populated by data from container - https://docs.docker.com/storage/bind-mounts/#mount-into-a-non-empty-directory-on-the-container.
 
-Volume - allow to persist container's data.
 ```
 
 </details>
@@ -23,8 +21,7 @@ Volume - allow to persist container's data.
 <br>
 
 ```plain
-Use flag -v or --mount when running the container - https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag.
-
+Use echo and > to create file.
 ```
 
 </details>
@@ -36,16 +33,13 @@ Use flag -v or --mount when running the container - https://docs.docker.com/stor
 
 <br>
 
-Run the container with mounted volume:
+Create index.html file:
 
 <br>
 
 ```plain
-docker run -d -p 80:80 --mount type=bind,src=/home/app-data,target=/usr/share/nginx/html --name sample-app nginx:alpine
-or
-docker run -d -p 80:80 -v /home/app-data:/usr/share/nginx/html --name sample-app nginx:alpine
-
-```{{copy}}
+docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/share/nginx/html/index.html"
+```{{exec}}
 
 <br>
 
@@ -56,3 +50,15 @@ Request localhost:80:
 ```plain
 curl localhost:80
 ```{{exec}}
+
+<br>
+
+Remove the `sample-app` container:
+
+<br>
+
+```plain
+docker rm -f sample-app
+Or
+docker stop sample app && docker rm sample-app
+```{{copy}}

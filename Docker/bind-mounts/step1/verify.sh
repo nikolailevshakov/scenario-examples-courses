@@ -13,9 +13,8 @@ set -e # exit once any command fails
 {
     date
 
-    docker image ls | grep nginx:alpine
     docker ps | grep sample-app
-    docker exec sample-app ls /home/files | grep container-data.txt
+    curl localhost:80 | grep "403 Forbidden"
 
 } >> ${LOGFILE} 2>&1
 

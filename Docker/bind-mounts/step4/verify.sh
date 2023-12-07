@@ -13,11 +13,10 @@ set -e # exit once any command fails
 {
     date
 
-    docker ps | grep sample-app
-    docker exec sample-app cat /usr/share/nginx/html/index.html | grep -v "Added from the host"
+    cat /root/app-data/index.html | grep "Added from the host"
     curl localhost:80 | grep "Added from the host"
+    cat /root/app-data/index.html | grep "Hello from the updated App"
     curl localhost:80 | grep "Hello from the updated App"
-
 
 } >> ${LOGFILE} 2>&1
 

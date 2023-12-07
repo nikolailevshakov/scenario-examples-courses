@@ -13,8 +13,7 @@ set -e # exit once any command fails
 {
     date
 
-    docker exec sample-app-2 ls /home/files/
-    docker ps | grep sample-app-2
+    cat /root/app-data/index.html | grep "Hello from the updated App"
 
 } >> ${LOGFILE} 2>&1
 

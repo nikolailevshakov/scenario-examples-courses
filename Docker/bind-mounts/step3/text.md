@@ -1,14 +1,19 @@
 
-Check the path on the host where `sample-volume` is mounted.
-Append line "<p>Added from the host</p>" to the index.html on the host.
+Run the docker container named `sample-app` from the same image `nginx:alpine` 
+mounted on /root/app-data on the host and on `/usr/share/nginx/html` directory in the container.
+Expose port 80.
+
 Request localhost:80.
+
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Documentation - https://docs.docker.com/storage/bind-mounts/
+Docs https://docs.docker.com/storage/volumes/
+
+Volume - allow to persist container's data.
 ```
 
 </details>
@@ -18,8 +23,8 @@ Documentation - https://docs.docker.com/storage/bind-mounts/
 <br>
 
 ```plain
-Use docker volume inspect command to see detailed information about the volume.
-Use >> to append line to the file.
+Use flag -v or --mount when running the container - https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag.
+
 ```
 
 </details>
@@ -31,13 +36,16 @@ Use >> to append line to the file.
 
 <br>
 
-Append line to the index.html on the host:
+Run the container with mounted volume:
 
 <br>
 
 ```plain
-echo "<p>Added from the host</p>" >> /home/app-data/index.html
-```{{exec}}
+docker run -d -p 80:80 --mount type=bind,src=/root/app-data,target=/usr/share/nginx/html --name sample-app nginx:alpine
+or
+docker run -d -p 80:80 -v /root/app-data:/usr/share/nginx/html --name sample-app nginx:alpine
+
+```{{copy}}
 
 <br>
 
@@ -48,5 +56,3 @@ Request localhost:80:
 ```plain
 curl localhost:80
 ```{{exec}}
-
-</details>

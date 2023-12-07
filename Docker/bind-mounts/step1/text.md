@@ -5,11 +5,7 @@ Expose port 80.
 
 Request localhost:80.
 
-Rewrite /usr/share/nginx/html/index.html file with `<h1>Hello from the updated App</h1>`
-
-Request localhost:80.
-
-Remove sample-app container.
+List files in the /usr/share/nginx/html directory in the container.
 
 <br>
 <details><summary>Info</summary>
@@ -48,50 +44,29 @@ Run the container with the mounted directory:
 <br>
 
 ```plain
-docker run -d -p 80:80 --mount type=bind,src=/home/app-data,target=/usr/share/nginx/html --name sample-app nginx:alpine
-or
-docker run -d -p 80:80 -v /home/app-data:/usr/share/nginx/html --name sample-app nginx:alpine
-
+docker run -d -p 80:80 --mount type=bind,src=/root/app-data,target=/usr/share/nginx/html --name sample-app nginx:alpine
 ```{{copy}}
-
-<br>
-
-Request localhost:80:
-
-<br>
-
-```plain
-curl localhost:80
-```{{exec}}
-
-<br>
-
-Rewrite index.html file:
-
-<br>
-
-```plain
-docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/share/nginx/html/index.html"
-```{{exec}}
-
-<br>
-
-Request localhost:80:
-
-<br>
-
-```plain
-curl localhost:80
-```{{exec}}
-
-<br>
-
-Remove the `sample-app` container:
-
-<br>
-
-```plain
-docker rm -f sample-app
 Or
-docker stop sample app && docker rm sample-app
+```plain
+docker run -d -p 80:80 -v /root/app-data:/usr/share/nginx/html --name sample-app nginx:alpine
 ```{{copy}}
+
+<br>
+
+Request localhost:80:
+
+<br>
+
+```plain
+curl localhost:80
+```{{exec}}
+
+<br>
+
+List files in the directory:
+
+<br>
+
+```plain
+docker exec sample-app sh -c "ls /usr/share/nginx/html"
+```{{exec}}

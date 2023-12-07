@@ -11,7 +11,7 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
-mkdir /home/app-data
+mkdir /root/app-data
 
 podman run -d \
   --restart=always \
