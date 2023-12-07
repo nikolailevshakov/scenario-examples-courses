@@ -1,10 +1,9 @@
 
-Run a container `sample-app-2` with mounted volume (using -v), with image `nginx:alpine`.
-Host's directory - `/root/files`, container's directory - `/home/files`.
+Run the docker container named `sample-app` from the same image `nginx:alpine` 
+mounted on /home/app-data on the host and on `/usr/share/nginx/html` directory in the container.
+Expose port 80.
 
-List files inside the container in the mounted directory.
-
-Inspect created volume.
+Request localhost:80.
 
 
 <br>
@@ -15,9 +14,6 @@ Inspect created volume.
 Docs https://docs.docker.com/storage/volumes/
 
 Volume - allow to persist container's data.
-
-In this task we basically doing the same that we did on the previous step.
-But as we don't create volume implicitly, we provide the path for the host's mounted point.
 ```
 
 </details>
@@ -27,7 +23,8 @@ But as we don't create volume implicitly, we provide the path for the host's mou
 <br>
 
 ```plain
-Use flag -v when running the container.
+Use flag -v or --mount when running the container - https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag.
+
 ```
 
 </details>
@@ -44,25 +41,18 @@ Run the container with mounted volume:
 <br>
 
 ```plain
-docker run -d --name sample-app-2 -v /root/files:/home/files nginx:alpine
-```
+docker run -d -p 80:80 --mount type=bind,src=/home/app-data,target=/usr/share/nginx/html --name sample-app nginx:alpine
+or
+docker run -d -p 80:80 -v /home/app-data:/usr/share/nginx/html --name sample-app nginx:alpine
+
+```{{copy}}
 
 <br>
 
-List files inside the mounted directory in the container:
-
-<br>
-
-```plain
-docker exec sample-app-2 ls /home/files
-```{{exec}}
-
-<br>
-
-Inspect created volume:
+Request localhost:80:
 
 <br>
 
 ```plain
-docker volume inspect 
+curl localhost:80
 ```{{exec}}

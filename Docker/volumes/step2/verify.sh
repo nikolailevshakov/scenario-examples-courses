@@ -13,7 +13,7 @@ set -e # exit once any command fails
 {
     date
 
-    docker ps | grep sample-app-2
+    docker ps | grep sample-app
     docker volume ls | grep sample-volume
     curl localhost:80 | grep "<h1>Hello from the updated App</h1>"
 

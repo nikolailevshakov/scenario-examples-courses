@@ -1,24 +1,22 @@
 
-Create a volume `sample-volume`.
+Run the docker container named `sample-app` from image `nginx:alpine` 
+mounted on `/home/app-data` on the host and on `/usr/share/nginx/html` directory in the container.
+Expose port 80.
 
-Run the docker container named `sample-app` from image `nginx:alpine` with mounted volume.
-Volume's `type=volume`, src - `sample-volume`, container's directory - `/home/files`.
+Request localhost:80.
 
-Create `container-data.txt` inside the container `/home/files` directory.
+Rewrite /usr/share/nginx/html/index.html file with `<h1>Hello from the updated App</h1>`
 
-Remove the `sample-app` container.
+Request localhost:80.
 
-Create the `sample-app` container with the same mounted volume.
-
-Check if the file exists in the `/home/files` inside the container.
-
+Remove sample-app container.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Docs - https://docs.docker.com/storage/volumes/
+Volume is populated by data from container - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
 
 Use `docker volume --help` - to see how to work with volumes.
 ```
@@ -30,10 +28,9 @@ Use `docker volume --help` - to see how to work with volumes.
 <br>
 
 ```plain
-Use `--mount` flag when running the container.
+Use --mount flag when running the container to be more explicit (it's a recommended way according to the documentation).
 
-If you want to see where on the host the created volume is mounted use:
-`docker volume inspect sample-volume` command.
+Or use -v flag for a more concise command.
 ```
 
 </details>
@@ -43,16 +40,6 @@ If you want to see where on the host the created volume is mounted use:
 <details><summary>Solution</summary>
 <br>
 
-<br>
-
-Create volume:
-
-<br>
-
-```plain
-docker volume create sample-volume
-```{{exec}}
-
 
 <br>
 
@@ -61,20 +48,41 @@ Run the container with the mounted directory:
 <br>
 
 ```plain
-docker run -d --mount type=volume,src=sample-volume,target=/home/files --name sample-app nginx:alpine
-```{{exec}}
+docker run -d -p 80:80 --mount type=bind,src=/home/app-data,target=/usr/share/nginx/html --name sample-app nginx:alpine
+or
+docker run -d -p 80:80 -v /home/app-data:/usr/share/nginx/html --name sample-app nginx:alpine
+
+```{{copy}}
 
 <br>
 
-Create `container-data.txt` inside the container's /home/files directory:
+Request localhost:80:
 
 <br>
 
 ```plain
+curl localhost:80
+```{{exec}}
 
-docker exec sample-app touch /home/files/container-data.txt
+<br>
 
-```
+Rewrite index.html file:
+
+<br>
+
+```plain
+docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/share/nginx/html/index.html"
+```{{exec}}
+
+<br>
+
+Request localhost:80:
+
+<br>
+
+```plain
+curl localhost:80
+```{{exec}}
 
 <br>
 
@@ -86,24 +94,4 @@ Remove the `sample-app` container:
 docker rm -f sample-app
 Or
 docker stop sample app && docker rm sample-app
-```{{exec}}
-
-<br>
-
-Run the container `sample-app` again with the same mounted volume:
-
-<br>
-
-```plain
-docker run -d --mount type=volume,src=sample-volume,target=/home/files --name sample-app nginx:alpine
-```{{exec}}
-
-<br>
-
-List files in the mounted `/home/files` directory inside the container `sample-app`:
-
-<br>
-
-```plain
-docker exec sample-app ls /home/files
-```{{exec}}
+```{{copy}}

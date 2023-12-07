@@ -1,16 +1,16 @@
 
 Check the path on the host where `sample-volume` is mounted.
 Append line "<p>Added from the host</p>" to the index.html on the host.
-See inners of the index.html file in the container.
+Request localhost:80.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Docs https://docs.docker.com/storage/volumes/
+Warning! Don't do this in production.
 
-Volume - allow to persist container's data.
+Volumes are not designed to be edited on the host. Use bind mounts for this instead.
 ```
 
 </details>
@@ -21,7 +21,7 @@ Volume - allow to persist container's data.
 
 ```plain
 Use docker volume inspect command to see detailed information about the volume.
-Use `>>` to append line to the file.
+Use >> to append line to the file.
 ```
 
 </details>
@@ -39,7 +39,7 @@ Inspect sample-volume:
 
 ```plain
 docker volume inspect sample-volume
-```{{copy}}
+```{{exec}}
 
 <br>
 
@@ -48,17 +48,17 @@ Append line to the index.html on the host:
 <br>
 
 ```plain
-echo "<p>Added from the host</p>" >> /
+echo "<p>Added from the host</p>" >> /var/lib/docker/volumes/sample-volume/_data/index.html
 ```{{exec}}
 
 <br>
 
-See inners of the index.html file in the container.
+Request localhost:80:
 
 <br>
 
 ```plain
-docker exec sample-app cat /usr/share/nginx/html/index.html
+curl localhost:80
 ```{{exec}}
 
 </details>

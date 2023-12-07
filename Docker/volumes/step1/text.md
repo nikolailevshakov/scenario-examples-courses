@@ -9,6 +9,8 @@ Request localhost:80.
 
 Rewrite /usr/share/nginx/html/index.html file with `<h1>Hello from the updated App</h1>`
 
+Request localhost:80.
+
 Remove sample-app container.
 
 <br>
@@ -16,7 +18,7 @@ Remove sample-app container.
 <br>
 
 ```plain
-Docs - https://docs.docker.com/storage/volumes/
+Volume is populated by data from container - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
 
 Use `docker volume --help` - to see how to work with volumes.
 ```

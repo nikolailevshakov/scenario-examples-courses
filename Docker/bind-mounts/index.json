@@ -1,6 +1,6 @@
 {
-  "title": "Use volumes in container",
-  "description": "Use volumes in container",
+  "title": "Start a container with bind mount",
+  "description": "Start a container with bind mount",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,12 +9,12 @@
     },
     "steps": [
       {
-        "title": "Create named volume",
+        "title": "Start a container with bind mount mounted on directory",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Run container with -v flag",
+        "title": "Start a container with bind mount mounted on empty directory",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },
@@ -22,11 +22,6 @@
         "title": "Change file in the mounted volume",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
-      },
-      {
-        "title": "Bind volume",
-        "text": "step4/text.md",
-        "verify": "step4/verify.sh"
       }
     ],
     "assets": {

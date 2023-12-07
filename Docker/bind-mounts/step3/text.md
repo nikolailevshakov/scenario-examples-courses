@@ -1,24 +1,14 @@
 
-Append `Container's runtime data` line to the file inside the `sample-app-2` container `/home/files/file1.txt`
-
-Check the data inside file1.txt on the host.
-
-Append `Host's new data` line to the file on the host `/root/files/file1.txt`
-
-Check the data inside file1.txt in the container.
-
-Remove `sample-app-2` container.
-
-Check the data inside `file1.txt` on the host.
+Check the path on the host where `sample-volume` is mounted.
+Append line "<p>Added from the host</p>" to the index.html on the host.
+Request localhost:80.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Docs https://docs.docker.com/storage/volumes/
-
-Volume - allow to persist container's data.
+Documentation - https://docs.docker.com/storage/bind-mounts/
 ```
 
 </details>
@@ -28,9 +18,8 @@ Volume - allow to persist container's data.
 <br>
 
 ```plain
-Use -f flag to force deletion of the running container.
-
-Use `>>` to append line to the file.
+Use docker volume inspect command to see detailed information about the volume.
+Use >> to append line to the file.
 ```
 
 </details>
@@ -42,67 +31,22 @@ Use `>>` to append line to the file.
 
 <br>
 
-Append the line  `Container's runtime data` to the file1 inside the container:
+Append line to the index.html on the host:
 
 <br>
 
 ```plain
-docker exec sample-app echo "Container's runtime data" >> /home/files/file1.txt
-```
-
-<br>
-
-Cat `file1.txt` on the host:
-
-<br>
-
-```plain
-cat /root/files/file1.txt
+echo "<p>Added from the host</p>" >> /home/app-data/index.html
 ```{{exec}}
 
 <br>
 
-Append the line  `Host's new data` to the file1 on the host:
+Request localhost:80:
 
 <br>
 
 ```plain
-echo "Host's new data" >> /root/files/file1.txt
+curl localhost:80
 ```{{exec}}
-
-<br>
-
-Cat `file1.txt` in the container:
-
-<br>
-
-```plain
-docker exec sample-app cat /home/files/file1.txt
-```{{exec}}
-
-<br>
-
-Remove `sample-app-2`container:
-
-<br>
-
-```plain
-docker rm -f sample-app-2
-
-Or
-
-docker stop sample-app-2 && docker rm sample-app-2
-```{{exec}}
-
-<br>
-
-Cat `file1.txt` on the host:
-
-<br>
-
-```plain
-cat /root/files/file1.txt
-```{{exec}}
-
 
 </details>

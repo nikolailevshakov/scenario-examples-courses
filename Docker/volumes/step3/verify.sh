@@ -15,7 +15,7 @@ set -e # exit once any command fails
 
     docker ps | grep sample-app
     docker exec sample-app cat /usr/share/nginx/html/index.html | grep -v "<p>Added from the host</p>"
-    cat /index.html | grep "<p>Added from the host</p>"
+    curl localhost:80 | grep "<p>Added from the host</p>"
 
 } >> ${LOGFILE} 2>&1
 

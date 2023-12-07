@@ -23,7 +23,10 @@ Volume - allow to persist container's data.
 <br>
 
 ```plain
-Use flag -v when running the container.
+Use flag -v or --mount when running the container - https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag.
+
+Be carefull where on the container you mount the volume.
+As all of the data will be replaced by the data from the volume, if the volume is not empty.
 ```
 
 </details>
@@ -36,12 +39,13 @@ Use flag -v when running the container.
 <br>
 
 Run the container with mounted volume:
+(type=volume is not necessary, as it as a default behavior)
 
 <br>
 
 ```plain
 docker run -d -p 80:80 --mount type=volume,src=sample-volume,target=/usr/share/nginx/html --name sample-app nginx:alpine
-```
+```{{exec}}
 
 <br>
 

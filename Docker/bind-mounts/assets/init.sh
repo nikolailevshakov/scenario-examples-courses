@@ -11,9 +11,7 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
-
-mkdir /root/files
-echo "Application's data" > /root/files/file1.txt
+mkdir /home/app-data
 
 podman run -d \
   --restart=always \
