@@ -14,7 +14,8 @@ set -e # exit once any command fails
     date
 
     docker volume ls | grep sample-volume
-    cat /var/lib/docker/volumes/sample-volume/_data/index.html | grep "<h1>Hello from the updated App</h1>"
+    curl localhost:80 | grep "<title>Welcome to nginx!</title>"
+    cat /var/lib/docker/volumes/sample-volume/_data/index.html | grep "<title>Welcome to nginx!</title>"
 
 } >> ${LOGFILE} 2>&1
 

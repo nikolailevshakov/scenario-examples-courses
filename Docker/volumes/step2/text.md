@@ -1,19 +1,17 @@
-
-Run the docker container named `sample-app` from the same image `nginx:alpine` 
-mounted on `sample-volume` on the host and on `/usr/share/nginx/html` directory in the container.
-Expose port 80.
+Rewrite /usr/share/nginx/html/index.html file with `<h1>Hello from the updated App</h1>`
 
 Request localhost:80.
 
+Remove sample-app container.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Docs https://docs.docker.com/storage/volumes/
+Volume is populated by data from container - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
 
-Volume - allow to persist container's data.
+Use `docker volume --help` - to see how to work with volumes.
 ```
 
 </details>
@@ -23,10 +21,7 @@ Volume - allow to persist container's data.
 <br>
 
 ```plain
-Use flag -v or --mount when running the container - https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag.
-
-Be carefull where on the container you mount the volume.
-As all of the data will be replaced by the data from the volume, if the volume is not empty.
+Use >> to rewrite contents of the file.
 ```
 
 </details>
@@ -38,13 +33,12 @@ As all of the data will be replaced by the data from the volume, if the volume i
 
 <br>
 
-Run the container with mounted volume:
-(type=volume is not necessary, as it as a default behavior)
+Rewrite index.html file:
 
 <br>
 
 ```plain
-docker run -d -p 80:80 --mount type=volume,src=sample-volume,target=/usr/share/nginx/html --name sample-app nginx:alpine
+docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/share/nginx/html/index.html"
 ```{{exec}}
 
 <br>
@@ -56,3 +50,15 @@ Request localhost:80:
 ```plain
 curl localhost:80
 ```{{exec}}
+
+<br>
+
+Remove the `sample-app` container:
+
+<br>
+
+```plain
+docker rm -f sample-app
+Or
+docker stop sample app && docker rm sample-app
+```{{copy}}

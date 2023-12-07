@@ -1,16 +1,19 @@
 
-Check the path on the host where `sample-volume` is mounted.
-Append line "<p>Added from the host</p>" to the index.html on the host.
+Run the docker container named `sample-app` from the same image `nginx:alpine` 
+mounted on `sample-volume` on the host and on `/usr/share/nginx/html` directory in the container.
+Expose port 80.
+
 Request localhost:80.
+
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Warning! Don't do this in production.
+Docs https://docs.docker.com/storage/volumes/
 
-Volumes are not designed to be edited on the host. Use bind mounts for this instead.
+Volume - allow to persist container's data.
 ```
 
 </details>
@@ -20,8 +23,10 @@ Volumes are not designed to be edited on the host. Use bind mounts for this inst
 <br>
 
 ```plain
-Use docker volume inspect command to see detailed information about the volume.
-Use >> to append line to the file.
+Use flag -v or --mount when running the container - https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag.
+
+Be carefull where on the container you mount the volume.
+As all of the data will be replaced by the data from the volume, if the volume is not empty.
 ```
 
 </details>
@@ -33,22 +38,13 @@ Use >> to append line to the file.
 
 <br>
 
-Inspect sample-volume:
+Run the container with mounted volume:
+(type=volume is not necessary, as it as a default behavior)
 
 <br>
 
 ```plain
-docker volume inspect sample-volume
-```{{exec}}
-
-<br>
-
-Append line to the index.html on the host:
-
-<br>
-
-```plain
-echo "<p>Added from the host</p>" >> /var/lib/docker/volumes/sample-volume/_data/index.html
+docker run -d -p 80:80 --mount type=volume,src=sample-volume,target=/usr/share/nginx/html --name sample-app nginx:alpine
 ```{{exec}}
 
 <br>
@@ -60,5 +56,3 @@ Request localhost:80:
 ```plain
 curl localhost:80
 ```{{exec}}
-
-</details>

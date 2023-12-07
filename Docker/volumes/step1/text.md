@@ -7,12 +7,6 @@ Expose port 80.
 
 Request localhost:80.
 
-Rewrite /usr/share/nginx/html/index.html file with `<h1>Hello from the updated App</h1>`
-
-Request localhost:80.
-
-Remove sample-app container.
-
 <br>
 <details><summary>Info</summary>
 <br>
@@ -72,35 +66,3 @@ Request localhost:80:
 ```plain
 curl localhost:80
 ```{{exec}}
-
-<br>
-
-Rewrite index.html file:
-
-<br>
-
-```plain
-docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/share/nginx/html/index.html"
-```{{exec}}
-
-<br>
-
-Request localhost:80:
-
-<br>
-
-```plain
-curl localhost:80
-```{{exec}}
-
-<br>
-
-Remove the `sample-app` container:
-
-<br>
-
-```plain
-docker rm -f sample-app
-Or
-docker stop sample app && docker rm sample-app
-```{{copy}}
