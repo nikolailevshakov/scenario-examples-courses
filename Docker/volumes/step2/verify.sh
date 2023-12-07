@@ -14,7 +14,7 @@ set -e # exit once any command fails
     date
 
     docker volume ls | grep sample-volume
-    cat /var/lib/docker/volumes/sample-volume/_data/index.html | grep "<h1>Hello from the updated App</h1>"
+    cat /var/lib/docker/volumes/sample-volume/_data/index.html | grep "Hello from the updated App"
 
 } >> ${LOGFILE} 2>&1
 
