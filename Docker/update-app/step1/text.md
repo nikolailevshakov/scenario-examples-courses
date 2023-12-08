@@ -1,7 +1,7 @@
 
-Build docker image named `app/v1` from `/root/Dockerfile`.
+Build docker image named `app/v1` using `/root/Dockerfile`.
 
-Run the container named `app` from the created image. Expose port 3000.
+Start the container named app, linking port 3000 from the host to port 3000 within the container.
 
 Make a request to localhost:3000.
 
@@ -45,7 +45,7 @@ docker build -t app/v1 .
 
 <br>
 
-Launch the container while making port 3000 accessible::
+Launch the container exposing port 3000:
 
 <br>
 

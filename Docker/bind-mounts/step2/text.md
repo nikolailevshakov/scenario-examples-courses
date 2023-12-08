@@ -11,7 +11,6 @@ Remove sample-app container.
 
 ```plain
 Bind mount is not populated by data from container - https://docs.docker.com/storage/bind-mounts/#mount-into-a-non-empty-directory-on-the-container.
-
 ```
 
 </details>
@@ -59,6 +58,8 @@ Remove the `sample-app` container:
 
 ```plain
 docker rm -f sample-app
-Or
+```{{exec}}
+OR
+```plain
 docker stop sample app && docker rm sample-app
 ```{{copy}}

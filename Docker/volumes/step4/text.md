@@ -1,6 +1,6 @@
 
 Check the path on the host where `sample-volume` is mounted.
-Append line "<p>Added from the host</p>" to the index.html on the host.
+Append line "Added from the host" to the index.html on the host.
 Request localhost:80.
 
 <br>
@@ -48,7 +48,7 @@ Append line to the index.html on the host:
 <br>
 
 ```plain
-echo "<p>Added from the host</p>" >> /var/lib/docker/volumes/sample-volume/_data/index.html
+echo "Added from the host" >> /var/lib/docker/volumes/sample-volume/_data/index.html
 ```{{exec}}
 
 <br>

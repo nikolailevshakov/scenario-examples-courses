@@ -1,8 +1,9 @@
 
-Run the container `sample-app-2` from the same image `sample-image` with env variable `key2=value2` and `key1=new-value1`.
-Doesn't change the Dockerfile.
 
-Check env variables inside the newly created container.
+Launch a container named `sample-app-2` using the existing image `sample-image`, introducing the environment variables `key2=value2` and `key1=new-value1`. 
+Ensure the Dockerfile remains unchanged.
+
+List the environment variables within the instantiated `sample-app-2` container.
 
 
 <br>
@@ -43,7 +44,7 @@ docker run -d --name sample-app-2 -e key2=value2 -e key1=new-value1 sample-image
 
 <br>
 
-List environment variables inside the container:
+Display the container's environment variables:
 
 <br>
 

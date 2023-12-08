@@ -5,7 +5,8 @@ Build docker image `app/v2` from `/root/Dockerfile`.
 
 Remove container `app`.
 
-Run the container `app` from the image `app/v2`. Expose port 3000.
+Start the container named app (using `app/v2` image), linking port 3000 from the host to port 3000 within the container.
+
 
 Make a request to localhost:3000.
 
@@ -25,7 +26,7 @@ To run container with exposed port use -p flag.
 <br>
 
 ```plain
-Use >> to append line to the file.
+Use >> to append text to the file.
 
 Use docker build and docker run commands.
 

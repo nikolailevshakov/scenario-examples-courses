@@ -11,7 +11,7 @@ Remove sample-app container.
 ```plain
 Volume is populated by data from container - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
 
-Use `docker volume --help` - to see how to work with volumes.
+Use docker volume --help - to see how to work with volumes.
 ```
 
 </details>
@@ -21,7 +21,7 @@ Use `docker volume --help` - to see how to work with volumes.
 <br>
 
 ```plain
-Use >> to rewrite contents of the file.
+Use > to rewrite contents of the file.
 ```
 
 </details>
@@ -59,6 +59,8 @@ Remove the `sample-app` container:
 
 ```plain
 docker rm -f sample-app
+```{{exec}}
 Or
+```plain
 docker stop sample app && docker rm sample-app
-```{{copy}}
+```{{exec}}

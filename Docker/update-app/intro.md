@@ -1,1 +1,1 @@
-Build and run updated application container.
+Update containerized application.

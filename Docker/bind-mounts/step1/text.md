@@ -14,7 +14,7 @@ List files in the /usr/share/nginx/html directory in the container.
 ```plain
 Volume is populated by data from container - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
 
-Use `docker volume --help` - to see how to work with volumes.
+Use docker volume --help - to see how to work with volumes.
 ```
 
 </details>
@@ -45,11 +45,11 @@ Run the container with the mounted directory:
 
 ```plain
 docker run -d -p 80:80 --mount type=bind,src=/root/app-data,target=/usr/share/nginx/html --name sample-app nginx:alpine
-```{{copy}}
-Or
+```{{exec}}
+OR
 ```plain
 docker run -d -p 80:80 -v /root/app-data:/usr/share/nginx/html --name sample-app nginx:alpine
-```{{copy}}
+```{{exec}}
 
 <br>
 

@@ -24,7 +24,6 @@ Volume - allow to persist container's data.
 
 ```plain
 Use flag -v or --mount when running the container - https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag.
-
 ```
 
 </details>
@@ -42,10 +41,11 @@ Run the container with mounted volume:
 
 ```plain
 docker run -d -p 80:80 --mount type=bind,src=/root/app-data,target=/usr/share/nginx/html --name sample-app nginx:alpine
-or
+```{{exec}}
+OR
+```plain
 docker run -d -p 80:80 -v /root/app-data:/usr/share/nginx/html --name sample-app nginx:alpine
-
-```{{copy}}
+```{{exec}}
 
 <br>
 
