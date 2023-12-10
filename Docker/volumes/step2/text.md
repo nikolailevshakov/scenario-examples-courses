@@ -1,15 +1,16 @@
-Rewrite /usr/share/nginx/html/index.html file with `<h1>Hello from the updated App</h1>`
+Rewrite `/usr/share/nginx/html/index.html` file with `<h1>Hello from the updated App</h1>`
 
-Request localhost:80.
+Make a request to localhost:80.
 
-Remove sample-app container.
+Remove `sample-app` container.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Volume is populated by data from container - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Volume is populated by data from container, if the volume is empty - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Otherwise, the data in the container is going to be replaced by volume's data.
 
 Use docker volume --help - to see how to work with volumes.
 ```
@@ -22,6 +23,8 @@ Use docker volume --help - to see how to work with volumes.
 
 ```plain
 Use > to rewrite contents of the file.
+
+Use the command 'curl' for making a request to localhost.
 ```
 
 </details>

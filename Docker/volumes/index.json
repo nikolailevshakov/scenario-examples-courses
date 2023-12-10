@@ -19,12 +19,12 @@
         "verify": "step2/verify.sh"
       },
       {
-        "title": "Modify file on the host system",
+        "title": "Run another container",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
       },
       {
-        "title": "Modify file on the host system",
+        "title": "Update data on the host system",
         "text": "step4/text.md",
         "verify": "step4/verify.sh"
       }

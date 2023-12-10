@@ -2,8 +2,6 @@
   "title": "Course TWO has a nice title",
   "description": "Scenarios for docker course",
   "items": [
-    { "path": "environment-variables", "title": "Environment variables"},
-    { "path": "update-app", "title": "Update the application"},
     { "path": "volumes", "title": "Volumes" },
     { "path": "bind-mounts", "title": "Bind-mounts" },
     { "path": "multi-container-app", "title": "Multi container application" },

@@ -1,18 +1,21 @@
 
 Create docker volume named `sample-volume`.
 
-Run the docker container named `sample-app` from image `nginx:alpine` 
-mounted on `sample-volume` on the host and on `/usr/share/nginx/html` directory in the container.
-Expose port 80.
+Initiate a container named `sample-app`:
+* utilize the `nginx:alpine` image
+* attach it to the `sample-volume`
+* mount this volume to the `/usr/share/nginx/html` directory within the container
+* ensure port `80` on the host is mapped to port `80` within the container
 
-Request localhost:80.
+Make a request to localhost:80.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Volume is populated by data from container - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Volume is populated by data from container, if the volume is empty - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Otherwise, the data in the container is going to be replaced by volume's data.
 
 Use docker volume --help - to see how to work with volumes.
 ```
@@ -24,9 +27,11 @@ Use docker volume --help - to see how to work with volumes.
 <br>
 
 ```plain
-Use --mount flag when running the container to be more explicit (it's a recommended way according to the documentation).
+Use --mount or -v flag to mount volume.
 
-Or use -v flag for a more concise command.
+Use -d flag to run container in the detached mode.
+
+Use the command 'curl' for making a request to localhost.
 ```
 
 </details>
@@ -56,10 +61,14 @@ Run the container with the mounted directory:
 ```plain
 docker run -d -p 80:80 --mount type=volume,src=sample-volume,target=/usr/share/nginx/html --name sample-app nginx:alpine
 ```{{exec}}
+OR
+```plain
+docker run -d -p 80:80 --mount -v sample-volume:/usr/share/nginx/html --name sample-app nginx:alpine
+```{{exec}}
 
 <br>
 
-Request localhost:80:
+Make a request to localhost:80:
 
 <br>
 

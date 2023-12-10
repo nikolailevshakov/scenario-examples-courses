@@ -1,9 +1,11 @@
 
-Run the docker container named `sample-app` from the same image `nginx:alpine` 
-mounted on /root/app-data on the host and on `/usr/share/nginx/html` directory in the container.
-Expose port 80.
+Initiate a container named `sample-app`:
+* utilize the `nginx:alpine` image
+* attach it to the `/root/app-data` directory on the host
+* mount this bind to the `/usr/share/nginx/html` directory within the container
+* ensure port `80` on the host is mapped to port `80` within the container
 
-Request localhost:80.
+Make a request to localhost:80.
 
 
 <br>
@@ -23,7 +25,11 @@ Volume - allow to persist container's data.
 <br>
 
 ```plain
-Use flag -v or --mount when running the container - https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag.
+Use --mount or -v flag to mount volume.
+
+Use -d flag to run container in the detached mode.
+
+Use the command 'curl' for making a request to localhost.
 ```
 
 </details>
@@ -35,7 +41,7 @@ Use flag -v or --mount when running the container - https://docs.docker.com/stor
 
 <br>
 
-Run the container with mounted volume:
+Run the container with the mounted directory:
 
 <br>
 
@@ -49,7 +55,7 @@ docker run -d -p 80:80 -v /root/app-data:/usr/share/nginx/html --name sample-app
 
 <br>
 
-Request localhost:80:
+Make a request to localhost:80:
 
 <br>
 

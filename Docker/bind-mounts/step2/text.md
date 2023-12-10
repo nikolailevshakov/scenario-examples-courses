@@ -1,9 +1,9 @@
 
-Create /usr/share/nginx/html/index.html file with `<h1>Hello from the updated App</h1>`
+Create `/usr/share/nginx/html/index.html` file with `<h1>Hello from the updated App</h1>`
 
-Request localhost:80.
+Make a request to localhost:80.
 
-Remove sample-app container.
+Remove `sample-app` container.
 
 <br>
 <details><summary>Info</summary>
@@ -20,6 +20,12 @@ Bind mount is not populated by data from container - https://docs.docker.com/sto
 <br>
 
 ```plain
+Use --mount or -v flag to mount volume.
+
+Use -d flag to run container in the detached mode.
+
+Use the command 'curl' for making a request to localhost.
+
 Use echo and > to create file.
 ```
 
@@ -42,7 +48,7 @@ docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/
 
 <br>
 
-Request localhost:80:
+Make a request to localhost:80:
 
 <br>
 

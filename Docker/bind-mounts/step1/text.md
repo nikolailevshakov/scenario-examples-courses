@@ -1,20 +1,21 @@
 
-Run the docker container named `sample-app` from image `nginx:alpine` 
-mounted on `/home/app-data` on the host and on `/usr/share/nginx/html` directory in the container.
-Expose port 80.
+Initiate a container named `sample-app`:
+* utilize the `nginx:alpine` image
+* attach it to the `/root/app-data` directory on the host
+* mount this bind to the `/usr/share/nginx/html` directory within the container
+* ensure port `80` on the host is mapped to port `80` within the container
 
-Request localhost:80.
+Make a request to localhost:80.
 
-List files in the /usr/share/nginx/html directory in the container.
+List files in the `/usr/share/nginx/html `directory in the container.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Volume is populated by data from container - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
-
-Use docker volume --help - to see how to work with volumes.
+Bind mount is not populated by data from container, if the bind mount is empty - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Otherwise, the on the host is going to be replaced by container's data.
 ```
 
 </details>
@@ -24,9 +25,11 @@ Use docker volume --help - to see how to work with volumes.
 <br>
 
 ```plain
-Use --mount flag when running the container to be more explicit (it's a recommended way according to the documentation).
+Use --mount or -v flag to mount volume.
 
-Or use -v flag for a more concise command.
+Use -d flag to run container in the detached mode.
+
+Use the command 'curl' for making a request to localhost.
 ```
 
 </details>
@@ -53,7 +56,7 @@ docker run -d -p 80:80 -v /root/app-data:/usr/share/nginx/html --name sample-app
 
 <br>
 
-Request localhost:80:
+Make a request to localhost:80:
 
 <br>
 
@@ -63,7 +66,7 @@ curl localhost:80
 
 <br>
 
-List files in the directory:
+List files in the container's directory:
 
 <br>
 
