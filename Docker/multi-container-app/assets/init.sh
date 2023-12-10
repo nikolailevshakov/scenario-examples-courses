@@ -37,15 +37,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return datetime.datetime.now()
+    return str(datetime.datetime.now())
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=4000)
 EOF
 
-docker build -t date-app-image /root/Dockerfile
+docker build -t date-app-image /root
 
-# rm /root/Dockerfile /root/requirements.txt /root/date-app.py
+rm /root/Dockerfile /root/requirements.txt /root/date-app.py
 
 podman run -d \
   --restart=always \
