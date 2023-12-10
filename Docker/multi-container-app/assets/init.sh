@@ -74,7 +74,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    r = requests.get(localhost:4000)
+    r = requests.get(url="localhost:4000")
     return f"I got the date {str(r)} from the date-app"
 
 if __name__ == '__main__':
@@ -83,7 +83,7 @@ EOF
 
 docker build -t main-app-image /root
 
-rm /root/Dockerfile /root/requirements.txt /root/main-app.py
+#rm /root/Dockerfile /root/requirements.txt /root/main-app.py
 
 podman run -d \
   --restart=always \
