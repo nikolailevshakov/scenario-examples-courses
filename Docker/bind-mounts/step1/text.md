@@ -14,17 +14,16 @@ List files in the `/usr/share/nginx/html `directory in the container.
 <br>
 
 ```plain
+If the bind mount is empty, it won't be populated by the data from the container (compare it to the volumes).
+And it will clear the directory inside the container.
 
-If the bind mount is empty, it won't contain data from the container.
-However, if it already has data, that data will be replaced by the container's data on the host.
-
-Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Documentation - https://docs.docker.com/storage/bind-mounts/#start-a-container-with-a-bind-mount.
 ```
 
 </details>
 
 <br>
-<details><summary>Tip</summary>
+<details><summary>Tip 1</summary>
 <br>
 
 ```plain
@@ -33,8 +32,19 @@ Use --mount or -v flag to mount volume.
 Use -d flag to run container in the detached mode.
 
 Use the command 'curl' for making a request to localhost.
-```
 
+```
+</details>
+
+<br>
+<details><summary>Tip 2</summary>
+<br>
+
+```plain
+You will got 403 error on the request to localhost:80.
+
+There won't be any files in the /usr/share/nginx/html directory.
+```
 </details>
 
 

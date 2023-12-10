@@ -65,7 +65,7 @@ docker run -d -p 80:80 --mount type=volume,src=sample-volume,target=/usr/share/n
 ```{{exec}}
 OR
 ```plain
-docker run -d -p 80:80 --mount -v sample-volume:/usr/share/nginx/html --name sample-app nginx:alpine
+docker run -d -p 80:80 -v sample-volume:/usr/share/nginx/html --name sample-app nginx:alpine
 ```{{exec}}
 
 <br>

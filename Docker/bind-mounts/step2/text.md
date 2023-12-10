@@ -10,10 +10,7 @@ Remove `sample-app` container.
 <br>
 
 ```plain
-If the bind mount is empty, it won't contain data from the container.
-However, if it already has data, that data will be replaced by the container's data on the host.
-
-Documentation - https://docs.docker.com/storage/bind-mounts/#mount-into-a-non-empty-directory-on-the-container.
+Documentation - https://docs.docker.com/storage/bind-mounts/.
 ```
 
 </details>
@@ -70,5 +67,5 @@ docker rm -f sample-app
 ```{{exec}}
 OR
 ```plain
-docker stop sample app && docker rm sample-app
+docker stop sample-app && docker rm sample-app
 ```{{copy}}

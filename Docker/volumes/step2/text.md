@@ -67,5 +67,5 @@ docker rm -f sample-app
 ```{{exec}}
 Or
 ```plain
-docker stop sample app && docker rm sample-app
+docker stop sample-app && docker rm sample-app
 ```{{exec}}

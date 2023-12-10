@@ -1,6 +1,6 @@
 
 Check the path on the host where `sample-volume` is mounted.
-Append line "Added from the host" to the index.html on the host.
+Append line `Added from the host` to the `index.html` on the host.
 
 Make a request to `localhost:80`.
 
@@ -11,7 +11,8 @@ Make a request to `localhost:80`.
 ```plain
 Warning! Don't do this in production.
 
-Volumes are not designed to be edited on the host. Use bind mounts for this instead.
+Volumes are not designed to be edited on the host. 
+Use bind mounts for this instead.
 ```
 
 </details>
@@ -21,7 +22,7 @@ Volumes are not designed to be edited on the host. Use bind mounts for this inst
 <br>
 
 ```plain
-Use `docker volume inspect` command to see detailed information about the volume.
+Use "docker volume inspect" command to see detailed information about the volume.
 
 Use >> to append line to the file.
 ```
