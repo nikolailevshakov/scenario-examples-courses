@@ -45,7 +45,7 @@ EOF
 
 docker build -t date-app-image /root/Dockerfile
 
-rm /root/Dockerfile /root/requirements.txt /root/app.py
+# rm /root/Dockerfile /root/requirements.txt /root/date-app.py
 
 podman run -d \
   --restart=always \
