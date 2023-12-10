@@ -1,7 +1,7 @@
 
 Create `/usr/share/nginx/html/index.html` file with `<h1>Hello from the updated App</h1>`
 
-Make a request to localhost:80.
+Make a request to `localhost:80`.
 
 Remove `sample-app` container.
 
@@ -10,7 +10,10 @@ Remove `sample-app` container.
 <br>
 
 ```plain
-Bind mount is not populated by data from container - https://docs.docker.com/storage/bind-mounts/#mount-into-a-non-empty-directory-on-the-container.
+If the bind mount is empty, it won't contain data from the container.
+However, if it already has data, that data will be replaced by the container's data on the host.
+
+Documentation - https://docs.docker.com/storage/bind-mounts/#mount-into-a-non-empty-directory-on-the-container.
 ```
 
 </details>
@@ -48,7 +51,7 @@ docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/
 
 <br>
 
-Make a request to localhost:80:
+Make a request to `localhost:80`:
 
 <br>
 

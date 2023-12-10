@@ -3,21 +3,23 @@ Create docker volume named `sample-volume`.
 
 Initiate a container named `sample-app`:
 * utilize the `nginx:alpine` image
-* attach it to the `sample-volume`
+* attach it to the volume `sample-volume`
 * mount this volume to the `/usr/share/nginx/html` directory within the container
 * ensure port `80` on the host is mapped to port `80` within the container
 
-Make a request to localhost:80.
+Make a request to `localhost:80`.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Volume is populated by data from container, if the volume is empty - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
-Otherwise, the data in the container is going to be replaced by volume's data.
+If the volume is empty, volume is populated by data from container. 
+Otherwise, the data in the container is going to be replaced by the volume's data.
 
 Use docker volume --help - to see how to work with volumes.
+
+Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
 ```
 
 </details>
@@ -68,7 +70,7 @@ docker run -d -p 80:80 --mount -v sample-volume:/usr/share/nginx/html --name sam
 
 <br>
 
-Make a request to localhost:80:
+Make a request to `localhost:80`:
 
 <br>
 

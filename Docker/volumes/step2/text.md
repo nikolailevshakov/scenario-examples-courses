@@ -1,6 +1,6 @@
 Rewrite `/usr/share/nginx/html/index.html` file with `<h1>Hello from the updated App</h1>`
 
-Make a request to localhost:80.
+Make a request to `localhost:80`.
 
 Remove `sample-app` container.
 
@@ -9,10 +9,12 @@ Remove `sample-app` container.
 <br>
 
 ```plain
-Volume is populated by data from container, if the volume is empty - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
-Otherwise, the data in the container is going to be replaced by volume's data.
+If the volume is empty, volume is populated by data from container. 
+Otherwise, the data in the container is going to be replaced by the volume's data.
 
 Use docker volume --help - to see how to work with volumes.
+
+Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
 ```
 
 </details>
@@ -46,7 +48,7 @@ docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/
 
 <br>
 
-Request localhost:80:
+Make a request to `localhost:80`:
 
 <br>
 

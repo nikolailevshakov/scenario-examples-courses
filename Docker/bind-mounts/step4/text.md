@@ -1,7 +1,7 @@
 
 Append line "Added from the host" to the /root/app-data/index.html on the host.
 
-Make a request to localhost:80.
+Make a request to `localhost:80`.
 
 <br>
 <details><summary>Info</summary>
@@ -46,7 +46,7 @@ echo "Added from the host" >> /root/app-data/index.html
 
 <br>
 
-Make a request to localhost:80:
+Make a request to `localhost:80`:
 
 <br>
 

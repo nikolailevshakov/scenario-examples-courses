@@ -5,7 +5,7 @@ Initiate a container named `sample-app`:
 * mount this bind to the `/usr/share/nginx/html` directory within the container
 * ensure port `80` on the host is mapped to port `80` within the container
 
-Make a request to localhost:80.
+Make a request to `localhost:80`.
 
 
 <br>
@@ -13,9 +13,10 @@ Make a request to localhost:80.
 <br>
 
 ```plain
-Docs https://docs.docker.com/storage/volumes/
+If the bind mount is empty, it won't contain data from the container.
+However, if it already has data, that data will be replaced by the container's data on the host.
 
-Volume - allow to persist container's data.
+Documentation - https://docs.docker.com/storage/bind-mounts/#mount-into-a-non-empty-directory-on-the-container.
 ```
 
 </details>
@@ -55,7 +56,7 @@ docker run -d -p 80:80 -v /root/app-data:/usr/share/nginx/html --name sample-app
 
 <br>
 
-Make a request to localhost:80:
+Make a request to `localhost:80`:
 
 <br>
 
