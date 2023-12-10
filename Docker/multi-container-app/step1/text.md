@@ -1,11 +1,9 @@
 
-Add environment variable key1=value1 to the existed Dockerfile:
+Create network `app-network`.
 
-Build the image and tag it as `sample-image`.
-
-Run the image (create a container) named `sample-container`.
-
-Check if environment variable key1=value1 is existed inside the container.
+Initiate a container named `date-app`: 
+* utilize the `date-app-image` image
+* attach it to the `app-network` network
 
 
 <br>
@@ -13,11 +11,7 @@ Check if environment variable key1=value1 is existed inside the container.
 <br>
 
 ```plain
-Dockerfile: List of commands from which an Image can be build
-
-Image: Binary file which includes all data/requirements to be run as a Container
-
-Container: Running instance of an Image
+Networking in Docker - https://docs.docker.com/network/.
 ```
 
 </details>
@@ -27,8 +21,9 @@ Container: Running instance of an Image
 <br>
 
 ```plain
-Use ENV key word.
-Use -d (detached) flag when running the container.
+Use --network flag to attach container to the network.
+
+Use -d flag to run container in the detached mode.
 ```
 
 </details>
@@ -40,44 +35,22 @@ Use -d (detached) flag when running the container.
 
 <br>
 
-Add next line to the `/root/Dockerfile`:
+Create network:
 
 <br>
 
 ```plain
-ENV key1=value1
-```
-
-<br>
-
-Build the image:
-
-<br>
-
-```plain
-docker build -t sample-image .
-
-docker image ls
+docker network create app-network
 ```{{exec}}
 
 <br>
 
-Run the image:
+Run the container:
 
 <br>
 
 ```plain
-docker run -d --name sample-container sample-image
-```{{exec}}
-
-<br>
-
-List environment variables inside the container:
-
-<br>
-
-```plain
-docker exec sample-container env
+docker run -d --network app-network --name date-app date-app-image
 ```{{exec}}
 
 </details>

@@ -14,7 +14,7 @@
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Update data in the containerd",
+        "title": "Update data in the container",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },

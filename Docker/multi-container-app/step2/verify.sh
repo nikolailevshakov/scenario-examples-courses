@@ -14,7 +14,8 @@ set -e # exit once any command fails
     date
 
     docker ps | grep date-app
-    docker network ls | grep app-network
+    docker ps | grep main-app
+    curl localhost:3000 | grep "Current date is ..."
 
 } >> ${LOGFILE} 2>&1
 

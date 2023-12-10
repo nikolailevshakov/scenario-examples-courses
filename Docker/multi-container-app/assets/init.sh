@@ -12,8 +12,40 @@ mkdir -p /opt/ks
 
 # scenario specific
 cat >> /root/Dockerfile <<EOF
-FROM nginx
+FROM python:3.10-alpine
+
+WORKDIR /date-app
+
+COPY requirements.txt /date-app
+RUN pip3 install -r requirements.txt
+
+COPY . /date-app
+EXPOSE 4000
+
+ENTRYPOINT ["python3"]
+CMD ["date-app.py"]
 EOF
+
+cat >> /root/requirements.txt <<EOF
+flask
+EOF
+
+cat >> /root/date-app.py <<EOF
+from flask import Flask
+import datetime
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return datetime.datetime.now()
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=4000)
+EOF
+
+docker build -t date-app-image /root/Dockerfile
+
+rm /root/Dockerfile /root/requirements.txt /root/app.py
 
 podman run -d \
   --restart=always \

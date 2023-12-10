@@ -1,6 +1,6 @@
 {
-  "title": "Use environment variables in a Container",
-  "description": "Use environment variables in a Container",
+  "title": "Running multi-container application",
+  "description": "Run multi-container application",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,14 @@
     },
     "steps": [
       {
-        "title": "Add ENV variable",
+        "title": "Run first container",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Run second container",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
       }
     ],
     "assets": {

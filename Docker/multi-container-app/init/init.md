@@ -1,1 +1,1 @@
-Build and run a Docker container
+Build and run a multi-container application.
