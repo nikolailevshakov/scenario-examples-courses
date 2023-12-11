@@ -13,9 +13,12 @@ set -e # exit once any command fails
 {
     date
 
-    docker image ls | grep sample-image
-    docker ps | grep sample-container
-    docker exec sample-container env | grep key1=value1
+    docker ps | grep app-1
+    docker ps | grep app-2
+    docker network inspect bridge | grep app-1
+    docker network inspect bridge | grep app-2
+    docker exec app-1 sh -c 'curl app-2' | grep ""
+    docker exec app-1 sh -c 'curl 172.2.2.2' | grep "Hello from the app-1"
 
 } >> ${LOGFILE} 2>&1
 
