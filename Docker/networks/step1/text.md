@@ -35,18 +35,10 @@ Documentation - https://docs.docker.com/network/network-tutorial-standalone/#use
 Use curl -sS command to make a request.
 ```
 
-<br>
-<details><summary>Tip 2</summary>
-<br>
-
-```plain
-Use -d (detached) flag when running the container.
-```
-
 </details>
 
 <br>
-<details><summary>Tip 3</summary>
+<details><summary>Tip 2</summary>
 <br>
 
 ```plain

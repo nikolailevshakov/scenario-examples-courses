@@ -11,6 +11,8 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
+docker pull nginx:alpine
+apt install jq -y
 
 mkdir /root/app-1
 mkdir /root/app-2
