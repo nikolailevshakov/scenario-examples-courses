@@ -1,7 +1,7 @@
 
-Create network `sample-network`.
+Create brdige network `bridge-network`.
 
-Detach app-1 and app-2 containers from default bridge network to the newly created `sample-network`.
+Detach app-1 and app-2 containers from default bridge network to the newly created `bridge-network`.
 
 Make a request to app-1 and to app-2 ip address from app-2.
 
@@ -39,35 +39,47 @@ Documentation - https://docs.docker.com/network/network-tutorial-standalone/#use
 
 <br>
 
-Create network `sample-network`:
+Create network `bridge-network`:
 (--driver bridge is not nessecary here, as it is a default behaviour)
 
 <br>
 
 ```plain
-docker network create --driver bridge `sample-network`
+docker network create --driver bridge `bridge-network`
 ```
 
 <br>
 
-Connect `app-1` and `app-2` containers to the `sample-network` network:
+Disconnect `app-1` and `app-2` from the default `bridge` network:
 
 <br>
 
 ```plain
-docker network connect sample-network app-1
+docker network disconnect bridge app-1
 &&
-docker network connect sample-network app-2
+docker network disconnect bridge app-2
 ```{{exec}}
 
 <br>
 
-Run `docker network inspect sample-network`:
+Connect `app-1` and `app-2` containers to the `bridge-network` network:
 
 <br>
 
 ```plain
-docker network inspect sample-network
+docker network connect bridge-network app-1
+&&
+docker network connect bridge-network app-2
+```{{exec}}
+
+<br>
+
+Run `docker network inspect bridge-network`:
+
+<br>
+
+```plain
+docker network inspect bridge-network
 ```{{exec}}
 
 <br>

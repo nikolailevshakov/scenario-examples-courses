@@ -1,7 +1,9 @@
 
-ssh to the host ubuntu-2
+Create host network `host-network`.
 
-Make a request to `ubuntu-1:80` and to `ubuntu-1:81`
+Detach app-1 container from `bridge-network` network to the newly created `host-network`.
+
+Make a request to localhost:80.
 
 
 <br>
@@ -9,7 +11,7 @@ Make a request to `ubuntu-1:80` and to `ubuntu-1:81`
 <br>
 
 ```plain
-To ssh use `ssh host-name` command.
+If you use the host network mode for a container, that container's network stack isn't isolated from the Docker host (the container shares the host's networking namespace), and the container doesn't get its own IP-address allocated.
 ```
 
 </details>
@@ -20,9 +22,12 @@ To ssh use `ssh host-name` command.
 
 ```plain
 Use -d (detached) flag when running the container.
-Documentation - https://docs.docker.com/network/#published-ports.
 
-If you include the localhost IP address (127.0.0.1) with the publish flag, only the Docker host can access the published container port.
+Use --network flag to create host network.
+
+Ip address of pods in the network can be found by running "docker network inspect".
+
+Documentation - https://docs.docker.com/network/drivers/host/.
 ```
 
 </details>
@@ -34,22 +39,43 @@ If you include the localhost IP address (127.0.0.1) with the publish flag, only 
 
 <br>
 
-Make a request to `ubuntu-1:80`:
+Create network `host-network`:
 
 <br>
 
 ```plain
-curl ubuntu-1:80
-```
-
-<br>
-
-Make a request to `ubuntu-1:81`:
-
-<br>
-
-```plain
-curl ubuntu-1:81
+docker network create `--driver host` `host-network`
 ```{{exec}}
+
+<br>
+
+Disconnect `app-1` from the `bridge-network` network:
+
+<br>
+
+```plain
+docker network disconnect bridge-network app-1
+```{{exec}}
+
+<br>
+
+Connect `app-1` container to the `host-network` network:
+
+<br>
+
+```plain
+docker network connect host-network app-1
+```{{exec}}
+
+<br>
+
+Make a request to `localhost:80`:
+
+<br>
+
+```plain
+curl localhost:80
+```{{exec}}
+
 
 </details>

@@ -18,7 +18,7 @@ set -e # exit once any command fails
     docker network inspect bridge | grep app-1
     docker network inspect bridge | grep app-2
     docker exec app-1 sh -c 'curl app-2' | grep "Could not resolve host"
-    docker exec app-1 sh -c 'curl 172.17.0.3' | grep "Hello from the app-1"
+    docker exec app-1 sh -c 'curl 172.17.0.3' | grep "Hello from the app-2"
 
 } >> ${LOGFILE} 2>&1
 

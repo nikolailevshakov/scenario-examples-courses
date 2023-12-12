@@ -17,8 +17,8 @@ set -e # exit once any command fails
     docker ps | grep app-2
     docker network inspect sample-network | grep app-1
     docker network inspect sample-network | grep app-2
-    docker exec app-1 sh -c 'curl app-2' | grep "Hello from the app-1"
-    docker exec app-1 sh -c 'curl 172.17.0.3' | grep "Hello from the app-1"
+    docker exec app-1 sh -c 'curl app-2' | grep "Hello from the app-2"
+    docker exec app-1 sh -c 'curl 172.17.0.3' | grep "Hello from the app-2"
 
 } >> ${LOGFILE} 2>&1
 

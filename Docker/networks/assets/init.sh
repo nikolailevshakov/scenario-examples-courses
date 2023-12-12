@@ -14,8 +14,8 @@ mkdir -p /opt/ks
 
 mkdir /root/app-1
 mkdir /root/app-2
-echo "Hello from the app-1\n" > /root/app-1/index.html
-echo "Hello from the app-2\n" > /root/app-2/index.html
+echo "Hello from the app-1" > /root/app-1/index.html
+echo "Hello from the app-2" > /root/app-2/index.html
 
 podman run -d \
   --restart=always \
