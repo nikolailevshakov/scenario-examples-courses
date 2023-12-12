@@ -1,17 +1,17 @@
 
-Initiate container named `app-1`: 
-* attach it to the `/root/app-1` directory on the host
-* mount this bind to the `/usr/share/nginx/html` directory within the container
+Firstly, initiate container named `app-1`: 
+* mount `/root/app-1` directory on the host to the `/usr/share/nginx/html` directory within the container
 * utilize the `nginx:alpine` image
 
-Initiate container named `app-2`: 
-* attach it to the `/root/app-2` directory on the host
-* mount this bind to the `/usr/share/nginx/html` directory within the container
+Secondly, initiate container named `app-2`: 
+* mount `/root/app-2` directory on the host to the `/usr/share/nginx/html` directory within the container
 * utilize the `nginx:alpine` image
 
 Make sure that containers are attached to the default bridge network.
 
-Make a request to app-1 and to app-2 ip address from app-2.
+Make a request to `app-1` from `app-2`:
+* by using app-1 hostname
+* by using app-2 ip address
 
 <br>
 <details><summary>Info</summary>
@@ -19,22 +19,38 @@ Make a request to app-1 and to app-2 ip address from app-2.
 
 ```plain
 Use "docker network ls" to list current networks.
+
+If you do not specify any --network flags, the containers connect to the default bridge network.
+
+Documentation - https://docs.docker.com/network/network-tutorial-standalone/#use-the-default-bridge-network.
 ```
 
 </details>
 
 <br>
-<details><summary>Tip</summary>
+<details><summary>Tip 1</summary>
+<br>
+
+```plain
+Use curl -sS command to make a request.
+```
+
+<br>
+<details><summary>Tip 2</summary>
 <br>
 
 ```plain
 Use -d (detached) flag when running the container.
+```
 
-If you do not specify any --network flags, the containers connect to the default bridge network.
+</details>
 
-Ip address of pods in the network can be found by running "docker network inspect" command (json path .Containers[*].IPv4Address).
+<br>
+<details><summary>Tip 3</summary>
+<br>
 
-Documentation - https://docs.docker.com/network/network-tutorial-standalone/#use-the-default-bridge-network.
+```plain
+Ip address of pods in the network can be found by running "docker network inspect bridge | jq .[0].Containers".
 ```
 
 </details>
@@ -58,7 +74,7 @@ docker run -d -v /root/app-2:/usr/share/nginx/html --name app-2 nginx:alpine
 
 <br>
 
-Run `docker network inspect bridge`:
+List information about the network:
 
 <br>
 
@@ -73,7 +89,7 @@ Make a request to app-1 from app-2:
 <br>
 
 ```plain
-docker exec app-1 sh -c 'curl app-2'
+docker exec app-1 sh -c 'curl -sS app-2'
 ```{{exec}}
 
 <br>
@@ -83,7 +99,7 @@ Make a request to app-1 by ip address from app-2:
 <br>
 
 ```plain
-docker exec app-1 sh -c 'curl 172.17.0.3'
+docker exec app-1 sh -c 'curl -sS 172.17.0.3'
 ```{{exec}}
 
 </details>

@@ -3,7 +3,9 @@ Create brdige network `bridge-network`.
 
 Detach app-1 and app-2 containers from default bridge network to the newly created `bridge-network`.
 
-Make a request to app-1 and to app-2 ip address from app-2.
+Make a request to `app-1` from `app-2`:
+* by using app-1 hostname
+* by using app-2 ip address
 
 
 <br>
@@ -89,7 +91,7 @@ Make a request to app-1 from app-2:
 <br>
 
 ```plain
-docker exec app-1 sh -c 'curl app-2'
+docker exec app-1 sh -c 'curl -sS app-2'
 ```{{exec}}
 
 <br>
@@ -99,7 +101,7 @@ Make a request to app-1 by ip address from app-2:
 <br>
 
 ```plain
-docker exec app-1 sh -c 'curl 172.17.0.3'
+docker exec app-1 sh -c 'curl -sS 172.17.0.3'
 ```{{exec}}
 
 </details>
