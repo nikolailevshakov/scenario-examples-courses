@@ -1,11 +1,9 @@
 
 Create network `sample-network`.
 
-Initiate a container named `sample-app-2`:
-* utilize the `nginx:alpine` image
-* map `localhost:81` on the host with port `80` within the container
+Detach app-1 and app-2 containers from default bridge network to the newly created `sample-network`.
 
-Make a request to `localhost:81`.
+Make a request to app-1 and to app-2 ip address from app-2.
 
 
 <br>
@@ -24,7 +22,12 @@ Use -p or --publish flag to map ports.
 
 ```plain
 Use -d (detached) flag when running the container.
-Documentation - https://docs.docker.com/network/drivers/bridge/#differences-between-user-defined-bridges-and-the-default-bridge.
+
+If you do not specify any --network flags, the containers connect to the default bridge network.
+
+Ip address of pods in the network can be found by running "docker network inspect" command (json path .Containers[*].IPv4Address).
+
+Documentation - https://docs.docker.com/network/network-tutorial-standalone/#use-the-default-bridge-network.
 ```
 
 </details>
@@ -36,22 +39,55 @@ Documentation - https://docs.docker.com/network/drivers/bridge/#differences-betw
 
 <br>
 
-Initiate `sample-app-2` container:
+Create network `sample-network`:
+(--driver bridge is not nessecary here, as it is a default behaviour)
 
 <br>
 
 ```plain
-docker run -d -p localhost:81:80 --name sample-app-2 nginx:alpine
+docker network create --driver bridge `sample-network`
 ```
 
 <br>
 
-Make a request to `localhost:81`:
+Connect `app-1` and `app-2` containers to the `sample-network` network:
 
 <br>
 
 ```plain
-curl localhost:80
+docker network connect sample-network app-1
+&&
+docker network connect sample-network app-2
+```{{exec}}
+
+<br>
+
+Run `docker network inspect sample-network`:
+
+<br>
+
+```plain
+docker network inspect sample-network
+```{{exec}}
+
+<br>
+
+Make a request to app-1 from app-2:
+
+<br>
+
+```plain
+docker exec app-1 sh -c 'curl app-2'
+```{{exec}}
+
+<br>
+
+Make a request to app-1 by ip address from app-2:
+
+<br>
+
+```plain
+docker exec app-1 sh -c 'curl 172.17.0.3'
 ```{{exec}}
 
 </details>

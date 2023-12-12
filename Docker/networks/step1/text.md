@@ -18,7 +18,7 @@ Make a request to app-1 and to app-2 ip address from app-2.
 <br>
 
 ```plain
-Use `docker network ls` to list current networks.
+Use "docker network ls" to list current networks.
 ```
 
 </details>
@@ -32,7 +32,7 @@ Use -d (detached) flag when running the container.
 
 If you do not specify any --network flags, the containers connect to the default bridge network.
 
-Ip address of pods in the network can be found by running "docker network inspect" command.
+Ip address of pods in the network can be found by running "docker network inspect" command (json path .Containers[*].IPv4Address).
 
 Documentation - https://docs.docker.com/network/network-tutorial-standalone/#use-the-default-bridge-network.
 ```
@@ -52,8 +52,9 @@ Initiate `app-1` and `app-2` containers:
 
 ```plain
 docker run -d -v /root/app-1:/usr/share/nginx/html --name app-1 nginx:alpine
+&&
 docker run -d -v /root/app-2:/usr/share/nginx/html --name app-2 nginx:alpine
-```
+```{{exec}}
 
 <br>
 
@@ -82,7 +83,7 @@ Make a request to app-1 by ip address from app-2:
 <br>
 
 ```plain
-docker exec app-1 sh -c 'curl 172.0.0.1'
+docker exec app-1 sh -c 'curl 172.17.0.3'
 ```{{exec}}
 
 </details>
