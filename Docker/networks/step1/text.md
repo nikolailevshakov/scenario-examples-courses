@@ -42,7 +42,8 @@ Use curl -sS command to make a request.
 <br>
 
 ```plain
-Ip address of pods in the network can be found by running "docker network inspect bridge | jq .[0].Containers".
+Ip address of pods in the network can be found by running 
+"docker network inspect bridge | jq .[0].Containers".
 ```
 
 </details>

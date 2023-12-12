@@ -1,11 +1,12 @@
 
-Create brdige network `bridge-network`.
+Create bridge network `bridge-network`.
 
-Detach app-1 and app-2 containers from default bridge network to the newly created `bridge-network`.
+Detach `app-1` and `app-2` containers from default bridge network 
+and attach to the newly created `bridge-network`.
 
 Make a request to `app-1` from `app-2`:
-* by using app-1 hostname
-* by using app-2 ip address
+* by using `app-1` hostname
+* by using `app-2` ip address
 
 
 <br>
@@ -13,23 +14,28 @@ Make a request to `app-1` from `app-2`:
 <br>
 
 ```plain
-Use -p or --publish flag to map ports.
+Documentation - https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks.
 ```
 
 </details>
 
 <br>
-<details><summary>Tip</summary>
+<details><summary>Tip 1</summary>
 <br>
 
 ```plain
-Use -d (detached) flag when running the container.
+Use curl -sS command to make a request.
+```
 
-If you do not specify any --network flags, the containers connect to the default bridge network.
+</details>
 
-Ip address of pods in the network can be found by running "docker network inspect" command (json path .Containers[*].IPv4Address).
+<br>
+<details><summary>Tip 2</summary>
+<br>
 
-Documentation - https://docs.docker.com/network/network-tutorial-standalone/#use-the-default-bridge-network.
+```plain
+Ip address of pods in the network can be found by running 
+"docker network inspect bridge | jq .[0].Containers".
 ```
 
 </details>
@@ -47,8 +53,8 @@ Create network `bridge-network`:
 <br>
 
 ```plain
-docker network create --driver bridge `bridge-network`
-```
+docker network create --driver bridge bridge-network
+```{{exec}}
 
 <br>
 
@@ -101,7 +107,7 @@ Make a request to app-1 by ip address from app-2:
 <br>
 
 ```plain
-docker exec app-1 sh -c 'curl -sS 172.17.0.3'
+docker exec app-1 sh -c 'curl -sS 172.18.0.3'
 ```{{exec}}
 
 </details>
