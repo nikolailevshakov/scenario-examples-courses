@@ -26,6 +26,7 @@ Use -d (detached) flag when running the container.
 Use --network flag to create host network.
 
 Ip address of pods in the network can be found by running "docker network inspect".
+Make a note that app-1 container doesn't have an ip address.
 
 Documentation - https://docs.docker.com/network/drivers/host/.
 ```
@@ -44,7 +45,7 @@ Create network `host-network`:
 <br>
 
 ```plain
-docker network create `--driver host` `host-network`
+docker network create --driver host host-network
 ```{{exec}}
 
 <br>
