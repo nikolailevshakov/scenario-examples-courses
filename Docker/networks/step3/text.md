@@ -1,9 +1,12 @@
 
-Create host network `host-network`.
+Remove `app-1` container.
 
-Detach app-1 container from `bridge-network` network to the newly created `host-network`.
+Initiate container named `app-1`: 
+* mount `/root/app-1` directory on the host to the `/usr/share/nginx/html` directory within the container
+* attach container to the predefined `host` network
+* utilize the `nginx:alpine` image
 
-Make a request to localhost:80.
+Make a request to `localhost:80`.
 
 
 <br>
@@ -21,7 +24,9 @@ Documentation - https://docs.docker.com/network/drivers/host/.
 <br>
 
 ```plain
-Use --network flag to create host network.
+Use --network flag to attach container to the host network.
+It's not possible to attach running container to the host network.
+Thus, do it on the start of the container.
 ```
 
 </details>
@@ -46,32 +51,28 @@ and the container doesn't get its own IP-address allocated.
 
 <br>
 
-Create network `host-network`:
+Remove container `app-1`:
 
 <br>
 
 ```plain
-docker network create --driver host host-network
+docker rm -f app-1
+```{{exec}}
+OR
+```plain
+docker stop app-1
+&&
+docker rm app-1
 ```{{exec}}
 
 <br>
 
-Disconnect `app-1` from the `bridge-network` network:
+Initiate `app-1` container:
 
 <br>
 
 ```plain
-docker network disconnect bridge-network app-1
-```{{exec}}
-
-<br>
-
-Connect `app-1` container to the `host-network` network:
-
-<br>
-
-```plain
-docker network connect host-network app-1
+docker run -d -v /root/app-1:/usr/share/nginx/html --name app-1 --network host nginx:alpine
 ```{{exec}}
 
 <br>
