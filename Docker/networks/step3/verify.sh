@@ -13,8 +13,7 @@ set -e # exit once any command fails
 {
     date
 
-    docker network ls | grep "host-network"
-    docker network inspect host-network | grep app-1
+    docker network inspect host | grep app-1
     curl localhost:80 | grep "Hello from the app-1"
 
 } >> ${LOGFILE} 2>&1

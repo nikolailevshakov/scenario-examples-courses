@@ -1,7 +1,7 @@
 
 Remove `app-1` container.
 
-Initiate container named `app-1`: 
+Initiate new container named `app-1`: 
 * mount `/root/app-1` directory on the host to the `/usr/share/nginx/html` directory within the container
 * attach container to the predefined `host` network
 * utilize the `nginx:alpine` image
@@ -26,7 +26,7 @@ Documentation - https://docs.docker.com/network/drivers/host/.
 ```plain
 Use --network flag to attach container to the host network.
 It's not possible to attach running container to the host network.
-Thus, do it on the start of the container.
+Therefore, do it on the start of the container.
 ```
 
 </details>

@@ -6,7 +6,7 @@ and attach to the newly created `bridge-network`.
 
 Make a request to `app-1` from `app-2`:
 * by using `app-1` hostname
-* by using `app-2` ip address
+* by using `app-1` ip address
 
 
 <br>
@@ -97,7 +97,7 @@ Make a request to app-1 from app-2:
 <br>
 
 ```plain
-docker exec app-1 sh -c 'curl -sS app-2'
+docker exec app-2 sh -c 'curl -sS app-1'
 ```{{exec}}
 
 <br>
@@ -107,7 +107,7 @@ Make a request to app-1 by ip address from app-2:
 <br>
 
 ```plain
-docker exec app-1 sh -c 'curl -sS 172.18.0.3'
+docker exec app-2 sh -c 'curl -sS 172.18.0.2'
 ```{{exec}}
 
 </details>
