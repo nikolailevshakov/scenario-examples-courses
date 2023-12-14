@@ -60,8 +60,8 @@ Initiate `app-1` and `app-2` containers:
 <br>
 
 ```plain
-docker run -d -v /root/app-1:/usr/share/nginx/html --name app-1 nginx:alpine
-&&
+docker run -d -v /root/app-1:/usr/share/nginx/html --name app-1 nginx:alpine \
+&& \
 docker run -d -v /root/app-2:/usr/share/nginx/html --name app-2 nginx:alpine
 ```{{exec}}
 

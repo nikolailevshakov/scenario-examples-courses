@@ -63,9 +63,7 @@ Disconnect `app-1` and `app-2` from the default `bridge` network:
 <br>
 
 ```plain
-docker network disconnect bridge app-1
-&&
-docker network disconnect bridge app-2
+docker network disconnect bridge app-1 && docker network disconnect bridge app-2
 ```{{exec}}
 
 <br>

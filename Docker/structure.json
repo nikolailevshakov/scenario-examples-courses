@@ -6,6 +6,6 @@
     { "path": "bind-mounts", "title": "Bind mounts" },
     { "path": "dockerfile-best-practices", "title": "Dockerfile best practices" },
     { "path": "publishing-ports", "title": "Publishing ports"},
-    { "path": "networks", "title": "Networks in docker"}
+    { "path": "networks", "title": "Network"}
   ]
 }
