@@ -60,8 +60,8 @@ docker rm -f app-1
 ```{{exec}}
 OR
 ```plain
-docker stop app-1
-&&
+docker stop app-1 \
+&& \
 docker rm app-1
 ```{{exec}}
 
