@@ -41,7 +41,7 @@ Initiate `app-1` container:
 <br>
 
 ```plain
-docker run -d -p 80:80 --name app-1 nginx:alpine
+docker run -d -v /root/app-1:/usr/share/nginx/html -p 80:80 --name app-1 nginx:alpine
 ```{{exec}}
 
 <br>

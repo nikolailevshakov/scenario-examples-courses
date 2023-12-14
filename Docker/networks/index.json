@@ -22,11 +22,6 @@
         "title": "Run containers in host network",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
-      },
-      {
-        "title": "Run containers in layout network",
-        "text": "step4/text.md",
-        "verify": "step4/verify.sh"
       }
     ],
     "assets": {

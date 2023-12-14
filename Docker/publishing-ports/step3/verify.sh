@@ -13,8 +13,8 @@ set -e # exit once any command fails
 {
     date
 
-    ssh node01 'curl controlplane:80' | grep "Hello from the app-1"
-    ssh node01 'curl controlplane:81' | grep ""
+    ssh node01 'curl -sS controlplane:80' | grep "Hello from the app-1"
+
 } >> ${LOGFILE} 2>&1
 
 echo "done" # let Validator know success

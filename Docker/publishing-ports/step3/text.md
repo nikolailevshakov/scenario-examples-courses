@@ -35,6 +35,16 @@ only the Docker host can access the published container port.
 
 <br>
 
+ssh to the another node `node01`:
+
+<br>
+
+```plain
+ssh node01
+```{{exec}}
+
+<br>
+
 Make a request to `controlplane:80`:
 
 <br>

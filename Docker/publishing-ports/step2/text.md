@@ -42,7 +42,7 @@ Initiate `app-2` container:
 <br>
 
 ```plain
-docker run -d -p 127.0.0.1:81:80 --name app-2 nginx:alpine
+docker run -d -v /root/app-2:/usr/share/nginx/html -p 127.0.0.1:81:80 --name app-2 nginx:alpine
 ```{{exec}}
 
 <br>
@@ -52,7 +52,7 @@ Make a request to `localhost:81`:
 <br>
 
 ```plain
-curl localhost:80
+curl localhost:81
 ```{{exec}}
 
 </details>
