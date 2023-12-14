@@ -1,7 +1,10 @@
 
-Initiate a container named `sample-app-2`:
+Firstly, initiate container named `app-2`: 
+* mount `/root/app-2` directory on the host to the `/usr/share/nginx/html` directory within the container
 * utilize the `nginx:alpine` image
 * map `localhost:81` on the host with port `80` within the container
+
+
 
 Make a request to `localhost:81`.
 
@@ -34,13 +37,13 @@ Documentation - https://docs.docker.com/network/#published-ports.
 
 <br>
 
-Initiate `sample-app-2` container:
+Initiate `app-2` container:
 
 <br>
 
 ```plain
-docker run -d -p localhost:81:80 --name sample-app-2 nginx:alpine
-```
+docker run -d -p 127.0.0.1:81:80 --name app-2 nginx:alpine
+```{{exec}}
 
 <br>
 

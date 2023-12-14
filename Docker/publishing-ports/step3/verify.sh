@@ -13,9 +13,8 @@ set -e # exit once any command fails
 {
     date
 
-    docker ps | grep sample-app-2
-    curl localhost:81 | grep "Welcome to nginx!"
-
+    ssh node01 'curl controlplane:80' | grep "Hello from the app-1"
+    ssh node01 'curl controlplane:81' | grep ""
 } >> ${LOGFILE} 2>&1
 
 echo "done" # let Validator know success

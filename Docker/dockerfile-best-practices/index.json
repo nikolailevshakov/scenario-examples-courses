@@ -1,6 +1,6 @@
 {
-  "title": "Use environment variables in a Container",
-  "description": "Use environment variables in a Container",
+  "title": "Dockerfile best practices",
+  "description": "Dockerfile best practices",
   "details": {
     "intro": {
       "text": "intro.md",

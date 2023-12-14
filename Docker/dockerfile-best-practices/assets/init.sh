@@ -11,8 +11,8 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
-cat >> /root/Dockerfile <<EOF
-FROM nginx
+cat >> /root/app/Dockerfile <<EOF
+
 EOF
 
 podman run -d \

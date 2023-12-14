@@ -13,8 +13,8 @@ set -e # exit once any command fails
 {
     date
 
-    docker ps | grep sample-app-2
-    curl localhost:81 | grep "Welcome to nginx!"
+    docker ps | grep app-2
+    curl localhost:81 | grep "Hello from the app-2"
 
 } >> ${LOGFILE} 2>&1
 
