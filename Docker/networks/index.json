@@ -1,6 +1,6 @@
 {
   "title": "Network",
-  "description": "Networking in docker",
+  "description": "Network",
   "details": {
     "intro": {
       "text": "intro.md",

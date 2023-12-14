@@ -4,7 +4,6 @@
   "items": [
     { "path": "volumes", "title": "Volumes" },
     { "path": "bind-mounts", "title": "Bind mounts" },
-    { "path": "multi-container-app", "title": "Multi container application" },
     { "path": "dockerfile-best-practices", "title": "Dockerfile best practices" },
     { "path": "publishing-ports", "title": "Publishing ports"},
     { "path": "networks", "title": "Networks in docker"}
