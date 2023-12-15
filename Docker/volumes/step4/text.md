@@ -1,8 +1,8 @@
 
-Check the path on the host where `sample-volume` is mounted.
-Append line `Added from the host` to the `index.html` on the host.
+Verify the directory location on the host where `sample-volume` is linked.
+Add the line `Added from the host` to the `index.html` file on the host.
 
-Make a request to `localhost:80`.
+Send get request to `localhost:80`.
 
 <br>
 <details><summary>Info</summary>

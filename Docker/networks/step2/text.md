@@ -82,7 +82,7 @@ docker network connect bridge-network app-2
 
 <br>
 
-Run `docker network inspect bridge-network`:
+List information about the network:
 
 <br>
 
@@ -92,7 +92,7 @@ docker network inspect bridge-network
 
 <br>
 
-Make a request to app-1 from app-2:
+Send get request to app-1 from app-2:
 
 <br>
 
@@ -102,7 +102,7 @@ docker exec app-2 sh -c 'curl -sS app-1'
 
 <br>
 
-Make a request to app-1 by ip address from app-2:
+Make a request from `app-2` to `app-1` using its IP address:
 
 <br>
 

@@ -15,6 +15,7 @@ set -e # exit once any command fails
 
     docker ps | grep app-2
     curl localhost:81 | grep "Hello from the app-2"
+    if [[ $(ssh node01 'curl -sS controlplane:81' 2>&1) == *"Failed to connect to controlplane port 81: Connection refused"* ]]; then exit 0; else echo "error"; fi
 
 } >> ${LOGFILE} 2>&1
 

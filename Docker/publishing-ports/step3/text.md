@@ -1,8 +1,8 @@
 
-ssh to another host `node01`.
+Connect via SSH to the host named `node01`.
 
-Make a request to `controlplane:80` and to `controlplane:81`.
-Controlplane is the hostname of the host where you just created containers.
+Issue GET requests to both `controlplane:80` and `controlplane:81`. 
+The hostname 'controlplane' refers to the host where you've recently set up containers.
 
 
 <br>
@@ -10,20 +10,29 @@ Controlplane is the hostname of the host where you just created containers.
 <br>
 
 ```plain
-To ssh use `ssh node01` command.
-
 Documentation - https://docs.docker.com/network/#published-ports.
 ```
 
 </details>
 
 <br>
-<details><summary>Tip</summary>
+<details><summary>Tip 1</summary>
 <br>
 
 ```plain
 If you include the localhost IP address (127.0.0.1) with the publish flag, 
 only the Docker host can access the published container port.
+
+To ssh use `ssh node01` command.
+```
+
+<br>
+<details><summary>Tip 2</summary>
+<br>
+
+```plain
+You should expect an error message "Failed to connect to controlplane port 81: Connection refused" 
+ upon executing the `curl controlplane:81` command.
 ```
 
 </details>
@@ -35,7 +44,7 @@ only the Docker host can access the published container port.
 
 <br>
 
-ssh to the another node `node01`:
+Connect via SSH to the host named `node01`:
 
 <br>
 
@@ -45,7 +54,7 @@ ssh node01
 
 <br>
 
-Make a request to `controlplane:80`:
+Send get request to `controlplane:80`:
 
 <br>
 
@@ -55,7 +64,7 @@ curl controlplane:80
 
 <br>
 
-Make a request to `controlplane:81`:
+Send get request to `controlplane:81`:
 
 <br>
 

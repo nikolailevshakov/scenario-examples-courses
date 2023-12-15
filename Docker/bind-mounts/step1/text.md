@@ -5,7 +5,7 @@ Initiate a container named `sample-app`:
 * mount this bind to the `/usr/share/nginx/html` directory within the container
 * ensure port `80` on the host is mapped to port `80` within the container
 
-Make a request to `localhost:80`.
+Send get request to `localhost:80`.
 
 List files in the `/usr/share/nginx/html `directory in the container.
 
@@ -14,7 +14,7 @@ List files in the `/usr/share/nginx/html `directory in the container.
 <br>
 
 ```plain
-If the bind mount is empty, it won't be populated by the data from the container (compare it to the volumes).
+If the bind mount is empty, it won't be populated by the data from the container.
 And it will clear the directory inside the container.
 
 Documentation - https://docs.docker.com/storage/bind-mounts/#start-a-container-with-a-bind-mount.
@@ -31,7 +31,7 @@ Use --mount or -v flag to mount volume.
 
 Use -d flag to run container in the detached mode.
 
-Use the command 'curl' for making a request to localhost.
+Use the 'curl' command to send a request to the localhost.
 
 ```
 </details>
@@ -41,7 +41,7 @@ Use the command 'curl' for making a request to localhost.
 <br>
 
 ```plain
-You will got 403 error on the request to localhost:80.
+You will got 403 error as a reaponse to the get request to localhost:80.
 
 There won't be any files in the /usr/share/nginx/html directory.
 ```
@@ -69,7 +69,7 @@ docker run -d -p 80:80 -v /root/app-data:/usr/share/nginx/html --name sample-app
 
 <br>
 
-Make a request to `localhost:80`:
+Send get request to `localhost:80`:
 
 <br>
 

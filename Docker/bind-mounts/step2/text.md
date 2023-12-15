@@ -1,7 +1,7 @@
 
-Create `/usr/share/nginx/html/index.html` file with `<h1>Hello from the updated App</h1>`
+Generate an `index.html` file within `/usr/share/nginx/html` containing `<h1>Hello from the updated App</h1>`.
 
-Make a request to `localhost:80`.
+Send get request to `localhost:80`.
 
 Remove `sample-app` container.
 
@@ -20,11 +20,7 @@ Documentation - https://docs.docker.com/storage/bind-mounts/.
 <br>
 
 ```plain
-Use --mount or -v flag to mount volume.
-
-Use -d flag to run container in the detached mode.
-
-Use the command 'curl' for making a request to localhost.
+Use the 'curl' command to send a request to the localhost.
 
 Use echo and > to create file.
 ```
@@ -48,7 +44,7 @@ docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/
 
 <br>
 
-Make a request to `localhost:80`:
+Send get request to `localhost:80`:
 
 <br>
 

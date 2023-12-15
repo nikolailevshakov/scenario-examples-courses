@@ -1,7 +1,7 @@
 
-Append line `Added from the host`` to the `/root/app-data/index.html` on the host.
+Add line `Added from the host`` to the `/root/app-data/index.html` file on the host.
 
-Make a request to `localhost:80`.
+Send get request to `localhost:80`.
 
 <br>
 <details><summary>Info</summary>
@@ -18,13 +18,9 @@ Documentation - https://docs.docker.com/storage/bind-mounts/
 <br>
 
 ```plain
-Use --mount or -v flag to mount volume.
+Use the 'curl' command to send a request to the localhost.
 
-Use -d flag to run container in the detached mode.
-
-Use the command 'curl' for making a request to localhost.
-
-Use >> to append line to the file.
+Use >> to add line to the file.
 ```
 
 </details>
@@ -36,7 +32,7 @@ Use >> to append line to the file.
 
 <br>
 
-Append line to the `/root/app-data/index.html` on the host:
+Add line to the `/root/app-data/index.html` file on the host:
 
 <br>
 
@@ -46,7 +42,7 @@ echo "Added from the host" >> /root/app-data/index.html
 
 <br>
 
-Make a request to `localhost:80`:
+Send get request to `localhost:80`:
 
 <br>
 

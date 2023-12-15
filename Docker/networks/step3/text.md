@@ -25,21 +25,9 @@ Documentation - https://docs.docker.com/network/drivers/host/.
 
 ```plain
 Use --network flag to attach container to the host network.
+
 It's not possible to attach running container to the host network.
 Therefore, do it on the start of the container.
-```
-
-</details>
-
-<br>
-<details><summary>Tip 2</summary>
-<br>
-
-```plain
-If you use the host network mode for a container, that container's 
-network stack isn't isolated from the Docker host 
-(the container shares the host's networking namespace), 
-and the container doesn't get its own IP-address allocated.
 ```
 
 </details>
@@ -77,7 +65,7 @@ docker run -d -v /root/app-1:/usr/share/nginx/html --name app-1 --network host n
 
 <br>
 
-Make a request to `localhost:80`:
+Send get request to `localhost:80`:
 
 <br>
 

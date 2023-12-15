@@ -1,11 +1,11 @@
 
 
-Firstly, initiate container named `app-1`: 
+Initiate container named `app-1`: 
 * mount `/root/app-1` directory on the host to the `/usr/share/nginx/html` directory within the container
 * utilize the `nginx:alpine` image
 * ensure port `80` on the host is mapped to port `80` within the container
 
-Make a request to `localhost:80`.
+Send get request to `localhost:80`.
 
 
 <br>
@@ -13,7 +13,7 @@ Make a request to `localhost:80`.
 <br>
 
 ```plain
-Use -p or --publish flag to map ports.
+Documentation - https://docs.docker.com/network/#published-ports.
 ```
 
 </details>
@@ -24,7 +24,8 @@ Use -p or --publish flag to map ports.
 
 ```plain
 Use -d (detached) flag when running the container.
-Documentation - https://docs.docker.com/network/#published-ports.
+
+Use -p or --publish flag to map ports.
 ```
 
 </details>
@@ -46,7 +47,7 @@ docker run -d -v /root/app-1:/usr/share/nginx/html -p 80:80 --name app-1 nginx:a
 
 <br>
 
-Make a request to `localhost:80`:
+Send get request to `localhost:80`:
 
 <br>
 

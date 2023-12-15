@@ -15,6 +15,7 @@ set -e # exit once any command fails
 
     docker volume ls | grep sample-volume
     cat /var/lib/docker/volumes/sample-volume/_data/index.html | grep "Hello from the updated App"
+    if [[ $(docker inspect sample-app 2>&1) == *"No such object"* ]]; then exit 0; else echo "error"; fi
 
 } >> ${LOGFILE} 2>&1
 

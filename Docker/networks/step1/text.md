@@ -9,7 +9,7 @@ Secondly, initiate container named `app-2`:
 
 Make sure that containers are attached to the default bridge network.
 
-Make a request to `app-1` from `app-2`:
+Send get request to `app-1` container from `app-2` container:
 * by using app-1 hostname
 * by using app-2 ip address
 
@@ -32,7 +32,7 @@ Documentation - https://docs.docker.com/network/network-tutorial-standalone/#use
 <br>
 
 ```plain
-Use curl -sS command to make a request.
+Use curl -sS command to send get request.
 ```
 
 </details>
@@ -42,8 +42,19 @@ Use curl -sS command to make a request.
 <br>
 
 ```plain
-Ip address of pods in the network can be found by running 
+The IP addresses of containers within the network can be retrieved by executing the command:
 "docker network inspect bridge | jq .[0].Containers".
+```
+
+</details>
+
+<br>
+<details><summary>Tip 3</summary>
+<br>
+
+```plain
+You should expect an error message "Could not resolve host: app-2" 
+upon making request by using ip address.
 ```
 
 </details>
@@ -77,7 +88,7 @@ docker network inspect bridge
 
 <br>
 
-Make a request to app-1 from app-2:
+Send get request to app-1 from app-2:
 
 <br>
 
@@ -87,7 +98,7 @@ docker exec app-1 sh -c 'curl -sS app-2'
 
 <br>
 
-Make a request to app-1 by ip address from app-2:
+Make a request from `app-2` to `app-1` using its IP address:
 
 <br>
 
