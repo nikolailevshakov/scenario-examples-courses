@@ -26,13 +26,15 @@ only the Docker host can access the published container port.
 To ssh use `ssh node01` command.
 ```
 
+</details>
+
 <br>
 <details><summary>Tip 2</summary>
 <br>
 
 ```plain
 You should expect an error message "Failed to connect to controlplane port 81: Connection refused" 
-upon executing the `curl controlplane:81` command.
+upon executing the "curl controlplane:81" command.
 ```
 
 </details>

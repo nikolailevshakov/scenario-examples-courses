@@ -9,7 +9,7 @@ Remove `sample-app` container.
 <br>
 
 ```plain
-Check the instructions on handling volumes by using `docker volume --help`.
+Check the instructions on handling volumes by using "docker volume --help".
 
 Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
 ```
