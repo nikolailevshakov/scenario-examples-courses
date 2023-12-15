@@ -23,7 +23,7 @@ Documentation - https://docs.docker.com/network/#published-ports.
 If you include the localhost IP address (127.0.0.1) with the publish flag, 
 only the Docker host can access the published container port.
 
-To ssh use `ssh node01` command.
+To ssh use "ssh node01" command.
 ```
 
 </details>

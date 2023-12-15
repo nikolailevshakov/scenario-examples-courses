@@ -9,7 +9,7 @@ Secondly, initiate container named `app-2`:
 
 Make sure that containers are attached to the default bridge network.
 
-Send get request to `app-1` container from `app-2` container:
+Send get request from `app-1` container to `app-2` container:
 * by using app-2 hostname
 * by using app-2 ip address
 
@@ -88,7 +88,7 @@ docker network inspect bridge
 
 <br>
 
-Send get request from app-1 to app-2 :
+Send get request from `app-1` to `app-2`:
 
 <br>
 
