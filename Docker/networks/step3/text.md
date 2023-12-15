@@ -26,8 +26,8 @@ Documentation - https://docs.docker.com/network/drivers/host/.
 ```plain
 Use --network flag to attach container to the host network.
 
-It's not possible to attach running container to the host network.
-Therefore, do it on the start of the container.
+Attaching a running container to the host network isn't feasible, 
+so make sure to configure it when launching the container.
 ```
 
 </details>

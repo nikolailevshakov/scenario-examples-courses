@@ -1,6 +1,6 @@
 
 Verify the directory location on the host where `sample-volume` is linked.
-Add the line `Added from the host` to the `index.html` file on the host.
+Add the line `"Added from the host"` to the `index.html` file on the host.
 
 Send get request to `localhost:80`.
 

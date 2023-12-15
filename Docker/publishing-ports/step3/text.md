@@ -32,7 +32,7 @@ To ssh use `ssh node01` command.
 
 ```plain
 You should expect an error message "Failed to connect to controlplane port 81: Connection refused" 
- upon executing the `curl controlplane:81` command.
+upon executing the `curl controlplane:81` command.
 ```
 
 </details>

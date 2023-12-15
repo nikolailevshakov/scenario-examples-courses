@@ -1,4 +1,4 @@
-Rewrite `/usr/share/nginx/html/index.html` file with `<h1>Hello from the updated App</h1>`.
+Rewrite `/usr/share/nginx/html/index.html` file with `"<h1>Hello from the updated App</h1>"`.
 
 Send get request to `localhost:80`.
 

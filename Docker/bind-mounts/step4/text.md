@@ -1,5 +1,5 @@
 
-Add line `Added from the host`` to the `/root/app-data/index.html` file on the host.
+Add line `"Added from the host"` to the `/root/app-data/index.html` file on the host.
 
 Send get request to `localhost:80`.
 

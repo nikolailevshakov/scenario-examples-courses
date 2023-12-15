@@ -32,7 +32,6 @@ Use --mount or -v flag to mount volume.
 Use -d flag to run container in the detached mode.
 
 Use the 'curl' command to send a request to the localhost.
-
 ```
 </details>
 

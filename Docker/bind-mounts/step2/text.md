@@ -1,5 +1,5 @@
 
-Generate an `index.html` file within `/usr/share/nginx/html` containing `<h1>Hello from the updated App</h1>`.
+Generate an `index.html` file within `/usr/share/nginx/html` containing `"<h1>Hello from the updated App</h1>"`.
 
 Send get request to `localhost:80`.
 
@@ -64,4 +64,4 @@ docker rm -f sample-app
 OR
 ```plain
 docker stop sample-app && docker rm sample-app
-```{{copy}}
+```{{exec}}
