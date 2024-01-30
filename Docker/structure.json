@@ -6,6 +6,8 @@
     { "path": "bind-mounts", "title": "Bind mounts" },
     { "path": "dockerfile-best-practices", "title": "Dockerfile best practices" },
     { "path": "publishing-ports", "title": "Publishing ports"},
-    { "path": "networks", "title": "Network"}
+    { "path": "networks", "title": "Network"},
+    { "path": "add-or-copy", "title": "ADD or COPY"},
+    { "path": "cmd-or-entrypoint", "title": "CMD or ENTRYPOINT"}
   ]
 }

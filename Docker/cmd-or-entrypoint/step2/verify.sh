@@ -13,8 +13,9 @@ set -e # exit once any command fails
 {
     date
 
-    cat /root/app/Dockerfile | grep "COPY go.mod go.sum ."
-    docker images | grep server-1
+    docker images | grep entrypoint-echo
+    docker run --rm entrypoint-echo | grep "hi, from container!"
+    docker inspect entrypoint-echo | grep alpine
 
 } >> ${LOGFILE} 2>&1
 

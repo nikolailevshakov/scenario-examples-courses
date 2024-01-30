@@ -1,6 +1,6 @@
 {
-  "title": "Dockerfile best practices",
-  "description": "Dockerfile best practices",
+  "title": "ADD or COPY",
+  "description": "ADD or COPY",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,29 +9,19 @@
     },
     "steps": [
       {
-        "title": "Cached layers",
+        "title": "Coping files",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Multi-stage build",
+        "title": "Downloading resources",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },
       {
-        "title": "Build multiple images",
+        "title": "Fetching git resources",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
-      },
-      {
-        "title": "Build arguments",
-        "text": "step4/text.md",
-        "verify": "step4/verify.sh"
-      },
-      {
-        "title": "Export binaries",
-        "text": "step5/text.md",
-        "verify": "step5/verify.sh"
       }
     ],
     "assets": {

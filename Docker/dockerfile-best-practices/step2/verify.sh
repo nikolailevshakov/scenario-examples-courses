@@ -13,8 +13,9 @@ set -e # exit once any command fails
 {
     date
 
-    cat /root/app/Dockerfile | grep "COPY go.mod go.sum ."
-    docker images | grep server-1
+    docker image ls | grep server-2
+    cat /root/app/Dockerfile | grep scratch
+    cat /root/app/Dockerfile | grep 'from=0'
 
 } >> ${LOGFILE} 2>&1
 

@@ -11,9 +11,10 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
-git clone https://github.com/dockersamples/buildme /root/app
-rm /root/app/Taskfile.yml /root/app/README.md
-rm -rf /root/app/chapters
+cat > /root/Dockerfile <<EOF
+FROM alpine
+CMD ["echo", "hi, from container!"]
+EOF
 
 podman run -d \
   --restart=always \

@@ -1,11 +1,7 @@
 
-Add environment variable key1=value1 to the existed Dockerfile:
-
-Build the image and tag it as `sample-image`.
-
-Run the image (create a container) named `sample-container`.
-
-Check if environment variable key1=value1 is existed inside the container.
+There is a Dockerfile /root/app/Dockerfile.
+Modify it, so dependency layer can be reused.
+Build the image, name it `server-1`.
 
 
 <br>
@@ -13,11 +9,7 @@ Check if environment variable key1=value1 is existed inside the container.
 <br>
 
 ```plain
-Dockerfile: List of commands from which an Image can be build
-
-Image: Binary file which includes all data/requirements to be run as a Container
-
-Container: Running instance of an Image
+Documentation: https://docs.docker.com/build/guide/layers/#cached-layers.
 ```
 
 </details>
@@ -27,8 +19,11 @@ Container: Running instance of an Image
 <br>
 
 ```plain
-Use ENV key word.
-Use -d (detached) flag when running the container.
+In Dockerfile every command is a layer. And if command is doing exactly the same then the layer will be loaded from cache.
+However, in our case we copy all of the files (dependecies and modified source code files) in one command.
+More effective will be to initially copy dependecy files (as they are changed less often than source code) and install them.
+And only afterwards copy source code files. This way we got more layers loaded from the cache on the build of a new image.
+It seems like a very small gain in time here, but it can be important when building really big applications.
 ```
 
 </details>
@@ -40,13 +35,20 @@ Use -d (detached) flag when running the container.
 
 <br>
 
-Add next line to the `/root/Dockerfile`:
+Modify `/root/app/Dockerfile`:
 
 <br>
 
 ```plain
-ENV key1=value1
-```
+# syntax=docker/dockerfile:1
+FROM golang:1.21-alpine # cached
+WORKDIR /src # cached
+COPY go.mod go.sum . # cached
+RUN go mod download # cached
+COPY . .
+RUN go build -o /bin/server ./cmd/server
+ENTRYPOINT [ "/bin/server" ]
+```{{copy}}
 
 <br>
 
@@ -55,29 +57,10 @@ Build the image:
 <br>
 
 ```plain
-docker build -t sample-image .
+docker build -t server-1
 
 docker image ls
 ```{{exec}}
 
-<br>
-
-Run the image:
-
-<br>
-
-```plain
-docker run -d --name sample-container sample-image
-```{{exec}}
-
-<br>
-
-List environment variables inside the container:
-
-<br>
-
-```plain
-docker exec sample-container env
-```{{exec}}
 
 </details>
