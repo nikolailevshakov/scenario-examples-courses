@@ -1,11 +1,11 @@
 
 Build image `cmd-echo` using `/root/Dockerfile`.
-Check what is CMD and ENTRYPOINT of the base `alpine` and newly created `cmd-echo` image.
+Check what is CMD of the newly created `cmd-echo` image.
 
-Run the container from the `cmd-echo`:
-- with default CMD and ENTRYPOINT values
-- overwright CMD command by `hi, from the updated image` using CLI
-- with entrypoint `date`
+Run the `cmd-echo` container:
+- Without any changes
+- Overwrite CMD with `date` via CLI
+- Set the entrypoint to `date` via CLI
 
 <br>
 <details><summary>Info</summary>
@@ -29,6 +29,7 @@ However, it can be used as a way to provide an executable and defaults.
 
 ```plain
 Use docker run --rm cmd-image to remove container after it finished.
+
 Use docker inspect <image-name> to get details about the image's CMD and ENTRYPOINT.
 ```
 
@@ -76,8 +77,8 @@ Run the container with updated CMD command:
 <br>
 
 ```plain
-docker run --rm cmd-echo echo "hi, from the updated image"
-```{{copy}}
+docker run --rm cmd-echo date
+```{{exec}}
 
 <br>
 

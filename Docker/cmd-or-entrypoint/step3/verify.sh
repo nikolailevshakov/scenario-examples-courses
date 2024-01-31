@@ -14,9 +14,9 @@ set -e # exit once any command fails
     date
 
     docker images ls | grep sleep-image
-    cat /root/Dockerfile | grep ENTRYPOINT
-    cat /root/Dockerfile | grep sleep
-    cat /root/Dockerfile | grep CMD
+    cat /root/Dockerfile | grep -i ENTRYPOINT
+    cat /root/Dockerfile | grep echo
+    cat /root/Dockerfile | grep -i CMD
 
 } >> ${LOGFILE} 2>&1
 

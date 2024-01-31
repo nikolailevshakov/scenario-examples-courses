@@ -1,12 +1,13 @@
 
-Remove CMD command from Dockerfile and add ENTRYPOINT command that will run the same command.
-Build image from /root/Dockerfile and name it `entrypoint-echo`.
-Check what is cmd and entrypoint of the newly created `entrypoint-echo` image.
+Remove CMD command from Dockerfile and add ENTRYPOINT command that will run the same `echo hi, from container!` command.
 
-Run the container from the `entrypoint-echo`:
-- with default cmd and entrypoint values
-- with another message `hi, from the updated image`
-- with entrypoint `date`
+Build image `entrypoint-echo` using `/root/Dockerfile`.
+Check what is ENTRYPOINT of the newly created `entrypoint-echo` image.
+
+Run the `entrypoint-echo` container:
+- Without any changes
+- Overwrite ENTRYPOINT with `date` via CLI
+- Set the CMD to `date` via CLI
 
 
 <br>
@@ -29,6 +30,8 @@ and arguments and then use either form of CMD to set additional defaults that ar
 
 ```plain
 Use docker run --rm cmd-image to remove container after it finished.
+
+Use docker inspect <image-name> to get details about the image's CMD and ENTRYPOINT.
 ```
 
 </details>
@@ -58,18 +61,17 @@ Build docker image `/root/Dockerfile`:
 <br>
 
 ```plain
-docker build -t entrypoint-echo /root/
+docker build -t entrypoint-echo .
 ```{{exec}}
 
 <br>
 
-Explore cmd and entrypoint of `alpine` and `entrypoint-echo`:
+Explore ENTRYPOINT of `entrypoint-echo`:
 
 <br>
 
 ```plain
-docker inspect alpine | grep cmd, entrypoint
-docker inspect entrypoint-echo | grep cmd, entrypoint
+docker inspect entrypoint-echo | jq .[0].ContainerConfig.Entrypoint
 ```{{exec}}
 
 <br>
@@ -84,15 +86,13 @@ docker run --rm entrypoint-echo
 
 <br>
 
-Run the container with updated message:
+Run the container with date:
 
 <br>
 
 ```plain
-docker run --rm entrypoint-echo -- echo "hi, from the updated image"
-or
-docker run --rm --cmd "echo hi, from the updated image" entrypoint-echo
-```{{copy}}
+docker run --rm --entrypoint date entrypoint-echo
+```{{exec}}
 
 <br>
 
@@ -101,7 +101,7 @@ Run the container with entrypoint `date`:
 <br>
 
 ```plain
-docker run --rm --entrypoint date entrypoint-echo
+docker run --rm entrypoint-echo date
 ```{{exec}}
 
 
