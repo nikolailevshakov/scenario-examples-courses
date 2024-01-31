@@ -1,1 +1,1 @@
-CMD vs ENTRYPOINT
+Using CMD and ENTRYPOINT in Dockerfile.

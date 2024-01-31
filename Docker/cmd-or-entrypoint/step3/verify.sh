@@ -13,7 +13,7 @@ set -e # exit once any command fails
 {
     date
 
-    docker image ls | grep sleep-image
+    docker images ls | grep sleep-image
     cat /root/Dockerfile | grep ENTRYPOINT
     cat /root/Dockerfile | grep sleep
     cat /root/Dockerfile | grep CMD

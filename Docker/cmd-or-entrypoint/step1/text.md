@@ -1,9 +1,10 @@
 
-Build image from /root/Dockerfile and name it `cmd-echo`.
-Check what is cmd and entrypoint of the base `alpine` and newly created `cmd-echo` image.
+Build image `cmd-echo` using `/root/Dockerfile`.
+Check what is CMD and ENTRYPOINT of the base `alpine` and newly created `cmd-echo` image.
+
 Run the container from the `cmd-echo`:
-- with default cmd and entrypoint values
-- with another message `hi, from the updated image`
+- with default CMD and ENTRYPOINT values
+- overwright CMD command by `hi, from the updated image` using CLI
 - with entrypoint `date`
 
 <br>
@@ -15,10 +16,6 @@ Documentation: https://docs.docker.com/engine/reference/builder/#cmd
 
 There can only be one CMD instruction in a Dockerfile.
 If you list more than one CMD, only the last one takes effect.
-
-Every container have entrypoint and cmd.
-If you don't provide new entrypoint, then the entrypoint from the base image will be used.
-Which is shell in the majority of cases.
 
 The purpose of a CMD is to provide defaults for an executing container.
 However, it can be used as a way to provide an executable and defaults.
@@ -32,6 +29,7 @@ However, it can be used as a way to provide an executable and defaults.
 
 ```plain
 Use docker run --rm cmd-image to remove container after it finished.
+Use docker inspect <image-name> to get details about the image's CMD and ENTRYPOINT.
 ```
 
 </details>
@@ -48,18 +46,17 @@ Build docker image `/root/Dockerfile`:
 <br>
 
 ```plain
-docker build -t cmd-echo /root/
+docker build -t cmd-echo .
 ```{{exec}}
 
 <br>
 
-Explore cmd and entrypoint of `alpine` and `cmd-echo`:
+Explore CMD of `cmd-echo`:
 
 <br>
 
 ```plain
-docker inspect alpine | grep cmd, entrypoint
-docker inspect cmd-echo | grep cmd, entrypoint
+docker inspect cmd-echo | jq .[0].ContainerConfig.Cmd
 ```{{exec}}
 
 <br>
@@ -74,14 +71,12 @@ docker run --rm cmd-echo
 
 <br>
 
-Run the container with updated message:
+Run the container with updated CMD command:
 
 <br>
 
 ```plain
-docker run --rm cmd-echo -- echo "hi, from the updated image"
-or
-docker run --rm --cmd "echo hi, from the updated image" cmd-echo
+docker run --rm cmd-echo echo "hi, from the updated image"
 ```{{copy}}
 
 <br>

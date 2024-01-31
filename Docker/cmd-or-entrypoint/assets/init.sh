@@ -16,6 +16,8 @@ FROM alpine
 CMD ["echo", "hi, from container!"]
 EOF
 
+apt install jq -y
+
 podman run -d \
   --restart=always \
   --name registry \

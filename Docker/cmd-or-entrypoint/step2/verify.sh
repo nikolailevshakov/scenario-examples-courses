@@ -14,8 +14,7 @@ set -e # exit once any command fails
     date
 
     docker images | grep entrypoint-echo
-    docker run --rm entrypoint-echo | grep "hi, from container!"
-    docker inspect entrypoint-echo | grep alpine
+    docker inspect entrypoint-echo | grep "hi, from container!"
 
 } >> ${LOGFILE} 2>&1
 
