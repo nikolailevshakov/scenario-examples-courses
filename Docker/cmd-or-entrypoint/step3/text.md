@@ -30,11 +30,22 @@ Alternatively, if you prefer, you can leave the ENTRYPOINT as is (often just a s
 </details>
 
 <br>
-<details><summary>Tip</summary>
+<details><summary>Tip 1</summary>
 <br>
 
 ```plain
 Use docker run -h
+```
+
+</details>
+
+<br>
+<details><summary>Tip 2</summary>
+<br>
+
+```plain
+Take another close look at the last two commands here, 
+as they illustrate the distinction between CMD and ENTRYPOINT.
 ```
 
 </details>
@@ -97,7 +108,7 @@ Run the container with updated message:
 
 ```plain
 docker run --rm image-echo hi, from the updated image
-```{{copy}}
+```{{exec}}
 
 <br>
 

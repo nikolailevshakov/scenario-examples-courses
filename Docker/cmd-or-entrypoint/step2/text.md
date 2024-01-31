@@ -18,20 +18,32 @@ Run the `entrypoint-echo` container:
 Documentation: https://docs.docker.com/engine/reference/builder/#entrypoint
 
 You can use the ENTRYPOINT to set fairly stable default commands 
-and arguments and then use either form of CMD to set additional defaults that are more likely to be changed.
-
+and arguments and then use either form of CMD to set 
+additional defaults that are more likely to be changed.
 ```
 
 </details>
 
 <br>
-<details><summary>Tip</summary>
+<details><summary>Tip 1</summary>
 <br>
 
 ```plain
 Use docker run --rm cmd-image to remove container after it finished.
 
 Use docker inspect <image-name> to get details about the image's CMD and ENTRYPOINT.
+```
+
+</details>
+
+<br>
+<details><summary>Tip 2</summary>
+<br>
+
+```plain
+Once ENTRYPOINT is set, any CMD overwrites, 
+without altering the ENTRYPOINT, will be interpreted as additional parameters.
+(Compare output of the overwriting CMD here with the previous step)
 ```
 
 </details>

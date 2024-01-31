@@ -5,7 +5,7 @@ Check what is CMD of the newly created `cmd-echo` image.
 Run the `cmd-echo` container:
 - Without any changes
 - Overwrite CMD with `date` via CLI
-- Set the entrypoint to `date` via CLI
+- Set the ENTRYPOINT to `date` via CLI
 
 <br>
 <details><summary>Info</summary>
@@ -82,7 +82,7 @@ docker run --rm cmd-echo date
 
 <br>
 
-Run the container with entrypoint `date`:
+Run the container with ENTRYPOINT `date`:
 
 <br>
 
