@@ -1,16 +1,17 @@
 
-Export binary to the `/root/app/bin` as `server` using Dockerfile.
+You can use `ADD` and `COPY` to perform the same action: copy a file.
+However, it is recomended to use only `COPY` for that.
+Modify existed  `/root/Dockerfile`:
+- copy file `copy_file.txt` with keyword `COPY`
+- copy file `add_file.txt` with keywork `ADD`
+- build image `app-image`, confirm that files were copied to the container
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Docs: https://docs.docker.com/build/guide/export/#export-binaries
-
-The default format of output for build command is docker image.
-But, it can be changed to binary by using `local` exporter (use `--output` flag).
-
+Documentation: https://docs.docker.com/develop/develop-images/instructions/#add-or-copy
 ```
 
 </details>
@@ -20,7 +21,7 @@ But, it can be changed to binary by using `local` exporter (use `--output` flag)
 <br>
 
 ```plain
-Use docker build -h
+Use docker build -h to see help.
 ```
 
 </details>
@@ -32,33 +33,42 @@ Use docker build -h
 
 <br>
 
-Add next line to the `/root/app/Dockerfile`:
+Add next line to the `/root/Dockerfile`:
 
 <br>
 
 ```plain
-FROM scratch AS binary
-COPY --from=server /bin/server /
-```
+COPY /root/copy_file.txt .
+```{{copy}}
 
 <br>
 
-Export binary:
+Add next line to the `/root/Dockerfile`:
 
 <br>
 
 ```plain
-docker build --output=/root/app/bin --target=binary /root/app/
+ADD /root/add_file.txt .
+```{{copy}}
+
+<br>
+
+Build image:
+
+<br>
+
+```plain
+docker build -t app-image .
 ```{{exec}}
 
 <br>
 
-Run the binary:
+Confirm that files are copied:
 
 <br>
 
 ```plain
-/root/app/bin/server
+docker run --rm app-image ls /app
 ```{{exec}}
 
 </details>

@@ -1,9 +1,8 @@
 
-Modify Docker file:
-- by coping file.txt
-- downloading file https://filesamples.com/samples/code/go/sample2.go
-
-Build image, run the container.
+Modify `/root/Dockerfile` up to best practices:
+- use `ADD` to fetch remote files
+- use `COPY` to copy local files
+- build `app-image-2`, confirm that files were transfered to the new container
 
 
 <br>
@@ -11,7 +10,9 @@ Build image, run the container.
 <br>
 
 ```plain
-Documentation: https://docs.docker.com/develop/develop-images/instructions/#add-or-copy
+Documentation: 
+https://docs.docker.com/engine/reference/builder/#add
+https://docs.docker.com/engine/reference/builder/#copy
 ```
 
 </details>
@@ -21,9 +22,12 @@ Documentation: https://docs.docker.com/develop/develop-images/instructions/#add-
 <br>
 
 ```plain
-COPY is used to copy files and directories.
-ADD is used to fetch files, it's recommended to use ADD instead of RUN wget, for instance, because it ensures a more precise build cache.
-ADD also has built-in support for checksum validation of the remote resources, and a protocol for parsing branches, tags, and subdirectories from Git URLs.
+COPY:
+- used to copy files and directories.
+ADD:
+- used to fetch files, it's recommended to use ADD instead of RUN wget, because it ensures a more precise build cache
+- has built-in support for checksum validation of the remote resources
+- has a protocol for parsing branches, tags, and subdirectories from Git URLs
 ```
 
 </details>
@@ -40,9 +44,18 @@ Modify `/root/Dockerfile`:
 <br>
 
 ```plain
-COPY file.txt .
-ADD https://filesamples.com/samples/code/go/sample2.go
-```
+ADD wget https://github.com/moby/buildkit.git#v0.10.1
+```{{copy}}
+
+<br>
+
+Modify `/root/Dockerfile`:
+
+<br>
+
+```plain
+COPY /root/add_file.txt .
+```{{copy}}
 
 <br>
 
@@ -51,9 +64,7 @@ Build the image:
 <br>
 
 ```plain
-docker build -t sample-image .
-
-docker image ls
+docker build -t app-image-2 .
 ```{{exec}}
 
 <br>
@@ -63,7 +74,7 @@ Run the image:
 <br>
 
 ```plain
-docker run -d --name sample-container sample-image
+docker run --rm app-image-2 ls /app
 ```{{exec}}
 
 

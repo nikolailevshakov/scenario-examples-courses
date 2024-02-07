@@ -13,11 +13,10 @@ set -e # exit once any command fails
 {
     date
 
-    docker image ls | grep sample-image
-    docker ps | grep sample-container
     cat /root/Dockerfile | grep ADD
     cat /root/Dockerfile | grep COPY
-    docker exec sample-container env | grep key1=value1
+    docker run --rm app-image-2 ls /app | grep copy_file.txt
+    docker run --rm app-image-2 ls /app | grep add_file.txt
 
 } >> ${LOGFILE} 2>&1
 

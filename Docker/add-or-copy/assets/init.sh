@@ -11,9 +11,20 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
-git clone https://github.com/dockersamples/buildme /root/app
-rm /root/app/Taskfile.yml /root/app/README.md
-rm -rf /root/app/chapters
+cat > /root/Dockerfile <<EOF
+FROM alpine
+WORKDIR /app
+RUN wget https://github.com/moby/buildkit.git#v0.10.1
+EOF
+
+cat > /root/copy_file.txt <<EOF
+Text file to copy
+EOF
+
+cat > /root/add_file.txt <<EOF
+Text file to add
+EOF
+
 
 podman run -d \
   --restart=always \
