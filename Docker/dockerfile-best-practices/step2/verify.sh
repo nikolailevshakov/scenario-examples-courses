@@ -13,7 +13,7 @@ set -e # exit once any command fails
 {
     date
 
-    docker image ls | grep server-2
+    docker images | grep server-2
     cat /root/app/Dockerfile | grep scratch
     cat /root/app/Dockerfile | grep 'from=0'
 

@@ -13,8 +13,8 @@ set -e # exit once any command fails
 {
     date
 
-    ls /root/app/bin | grep server
-    ls /root/app/bin | grep client
+    ls /root/app | grep server
+    ls /root/app | grep client
 
 } >> ${LOGFILE} 2>&1
 

@@ -1,5 +1,5 @@
 
-Build `run-server` and `run-client` from the same Dockerfile using target keyword.
+Build `run-server` and `run-client` images from the same Dockerfile using target keyword.
 
 
 <br>
@@ -39,20 +39,24 @@ Add next line to the `/root/Dockerfile`:
 # syntax=docker/dockerfile:1
 FROM golang:1.21-alpine AS base
 WORKDIR /src
-COPY go.mod go.sum .
+COPY go.mod go.sum /src/
 RUN go mod download
 COPY . .
 
+# build client
 FROM base AS build-client
 RUN go build -o /bin/client ./cmd/client
 
+# build server
 FROM base AS build-server
 RUN go build -o /bin/server ./cmd/server
 
+# copy client binary to client image
 FROM scratch AS client
 COPY --from=build-client /bin/client /bin/
 ENTRYPOINT [ "/bin/client" ]
 
+# copy server binary to server image
 FROM scratch AS server
 COPY --from=build-server /bin/server /bin/
 ENTRYPOINT [ "/bin/server" ]

@@ -13,7 +13,7 @@ set -e # exit once any command fails
 {
     date
 
-    docker images ls | grep image-echo
+    docker images | grep image-echo
     cat /root/Dockerfile | grep -i ENTRYPOINT
     cat /root/Dockerfile | grep echo
     cat /root/Dockerfile | grep -i CMD

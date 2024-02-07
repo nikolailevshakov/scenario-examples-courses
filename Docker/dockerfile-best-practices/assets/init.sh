@@ -14,6 +14,7 @@ mkdir -p /opt/ks
 git clone https://github.com/dockersamples/buildme /root/app
 rm /root/app/Taskfile.yml /root/app/README.md
 rm -rf /root/app/chapters
+apt install docker-buildx
 
 podman run -d \
   --restart=always \

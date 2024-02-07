@@ -9,7 +9,7 @@ Export binaries to the `/root/app/bin` as `server` and `client` using Dockerfile
 Docs: https://docs.docker.com/build/guide/export/#export-binaries
 
 The default format of output for build command is docker image.
-But, it can be changed to binary by using `local` exporter (use `--output` flag).
+But, it can be changed to binary by using local exporter (use --output flag).
 
 ```
 
@@ -41,7 +41,7 @@ Add next line to the `/root/app/Dockerfile`:
 ARG GO_VERSION=1.21
 FROM golang:${GO_VERSION}-alpine AS base
 WORKDIR /src
-COPY go.mod go.sum .
+COPY go.mod go.sum /src/
 RUN go mod download
 COPY . .
 
@@ -59,9 +59,10 @@ FROM scratch AS server
 COPY --from=build-server /bin/server /bin/
 ENTRYPOINT [ "/bin/server" ]
 
+# exporting binaries from server and client images
 FROM scratch AS binaries
 COPY --from=server /bin/server /
-COPY --from=client /bit/client /
+COPY --from=client /bin/client /
 ```{{copy}}
 
 <br>
@@ -71,7 +72,7 @@ Export binaries:
 <br>
 
 ```plain
-docker build --output=bin --target=binaries .
+docker build --output=/root/app --target=binaries .
 ```{{exec}}
 
 </details>

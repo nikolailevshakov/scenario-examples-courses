@@ -14,7 +14,7 @@ mkdir -p /opt/ks
 cat > /root/Dockerfile <<EOF
 FROM alpine
 WORKDIR /app
-RUN wget https://github.com/moby/buildkit.git#v0.10.1
+RUN wget https://github.com/moby/buildkit.git
 EOF
 
 cat > /root/copy_file.txt <<EOF

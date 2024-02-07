@@ -3,7 +3,7 @@ Build image `cmd-echo` using `/root/Dockerfile`.
 Check what is CMD of the newly created `cmd-echo` image.
 
 Run the `cmd-echo` container:
-- Without any changes
+- Don't modify Dockerfile
 - Overwrite CMD with `date` via CLI
 - Set the ENTRYPOINT to `date` via CLI
 

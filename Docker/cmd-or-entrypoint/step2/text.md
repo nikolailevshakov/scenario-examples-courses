@@ -5,7 +5,6 @@ Build image `entrypoint-echo` using `/root/Dockerfile`.
 Check what is ENTRYPOINT of the newly created `entrypoint-echo` image.
 
 Run the `entrypoint-echo` container:
-- Without any changes
 - Overwrite ENTRYPOINT with `date` via CLI
 - Set the CMD to `date` via CLI
 

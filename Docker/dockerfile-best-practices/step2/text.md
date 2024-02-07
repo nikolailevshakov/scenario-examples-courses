@@ -32,7 +32,7 @@ With multi-stage builds:
 
 <br>
 
-Modify `/root/app/Dockerfile`:
+Modify `/root/app/Dockerfile` (remove all comments first):
 
 <br>
 
@@ -40,7 +40,7 @@ Modify `/root/app/Dockerfile`:
 # syntax=docker/dockerfile:1
 FROM golang:1.21-alpine
 WORKDIR /src
-COPY go.mod go.sum .
+COPY go.mod go.sum /src/
 RUN go mod download
 COPY . .
 RUN go build -o /bin/client ./cmd/client
@@ -50,7 +50,7 @@ RUN go build -o /bin/server ./cmd/server
 FROM scratch # minimal base image
 COPY --from=0 /bin/server /bin/ # copy /bin/server file from the previously build image (0 as we didn't name it)
 ENTRYPOINT [ "/bin/server" ]
-```
+```{{copy}}
 
 <br>
 
@@ -60,8 +60,6 @@ Build the image:
 
 ```plain
 docker build -t server-2 .
-
-docker image ls
 ```{{exec}}
 
 

@@ -39,12 +39,12 @@ ADD:
 
 <br>
 
-Modify `/root/Dockerfile`:
+Modify `/root/Dockerfile` (here we also can specify tag):
 
 <br>
 
 ```plain
-ADD wget https://github.com/moby/buildkit.git#v0.10.1
+ADD https://github.com/moby/buildkit.git#v0.10.1 /app
 ```{{copy}}
 
 <br>
@@ -54,7 +54,7 @@ Modify `/root/Dockerfile`:
 <br>
 
 ```plain
-COPY /root/add_file.txt .
+COPY add_file.txt /app
 ```{{copy}}
 
 <br>

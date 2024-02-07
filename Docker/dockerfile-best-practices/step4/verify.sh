@@ -13,7 +13,7 @@ set -e # exit once any command fails
 {
     date
 
-    cat /root/app/Dockerfile | grep 'ARG GO_VERSION=1.21'
+    cat /root/app/Dockerfile | grep 'ARG GO_VERSION'
 
 } >> ${LOGFILE} 2>&1
 

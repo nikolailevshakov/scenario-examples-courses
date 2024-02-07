@@ -38,7 +38,7 @@ Add next line to the `/root/Dockerfile`:
 <br>
 
 ```plain
-COPY /root/copy_file.txt .
+COPY copy_file.txt /app
 ```{{copy}}
 
 <br>
@@ -48,7 +48,7 @@ Add next line to the `/root/Dockerfile`:
 <br>
 
 ```plain
-ADD /root/add_file.txt .
+ADD add_file.txt /app
 ```{{copy}}
 
 <br>

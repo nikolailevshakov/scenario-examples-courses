@@ -38,10 +38,14 @@ Add next line to the `/root/Dockerfile`:
 
 ```plain
 # syntax=docker/dockerfile:1
+
+# defining variable
 ARG GO_VERSION=1.21
+
+# using variable
 FROM golang:${GO_VERSION}-alpine AS base
 WORKDIR /src
-COPY go.mod go.sum .
+COPY go.mod go.sum /src/
 RUN go mod download
 COPY . .
 
