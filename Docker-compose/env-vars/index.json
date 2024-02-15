@@ -9,24 +9,19 @@
     },
     "steps": [
       {
-        "title": "Attach volume to the container",
+        "title": "Using CLI variables",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Update data in the container",
+        "title": "Using .env files",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },
       {
-        "title": "Run another container",
+        "title": "Variable precedence",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
-      },
-      {
-        "title": "Update data on the host system",
-        "text": "step4/text.md",
-        "verify": "step4/verify.sh"
       }
     ],
     "assets": {
