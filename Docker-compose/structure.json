@@ -1,0 +1,13 @@
+{
+  "title": "Docker Compose",
+  "description": "Run multi-container applications the right way",
+  "items": [
+    { "path": "env-vars", "title": "Environment variables" },
+    { "path": "volumes", "title": "Volume data" },
+    { "path": "recreating-containers", "title": "Recreating containers" },
+    { "path": "secrets", "title": "Using secrets"},
+    { "path": "networks", "title": "Networking"},
+    { "path": "multiple-files", "title": "Multiple compose files"},
+    { "path": "service-profiles", "title": "Using service profiles"}
+  ]
+}
