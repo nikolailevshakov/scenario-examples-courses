@@ -1,6 +1,6 @@
 {
-  "title": "Using environment variables",
-  "description": "Set envrinonment variables in docker compose",
+  "title": "Using volumes",
+  "description": "Work with volumes in docker compose",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,19 +9,14 @@
     },
     "steps": [
       {
-        "title": "Using CLI variables",
+        "title": "Using bind mounts",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Using .env files",
+        "title": "Using volumes",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
-      },
-      {
-        "title": "Variable precedence",
-        "text": "step3/text.md",
-        "verify": "step3/verify.sh"
       }
     ],
     "assets": {
