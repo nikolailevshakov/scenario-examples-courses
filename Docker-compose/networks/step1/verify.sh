@@ -13,9 +13,7 @@ set -e # exit once any command fails
 {
     date
 
-    docker volume ls | grep sample-volume
-    curl localhost:80 | grep "Welcome to nginx!"
-    cat /var/lib/docker/volumes/sample-volume/_data/index.html | grep "Welcome to nginx!"
+    curl localhost:8081 | grep "Hello from the app-1"
 
 } >> ${LOGFILE} 2>&1
 

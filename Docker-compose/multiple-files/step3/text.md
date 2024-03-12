@@ -1,10 +1,6 @@
-Initiate a container named `sample-app`:
-* utilize the `nginx:alpine` image
-* attach it to the volume `sample-volume`
-* mount this volume to the `/usr/share/nginx/html` directory within the container
-* ensure port `80` on the host is mapped to port `80` within the container
 
-Send get request to `localhost:80`.
+Include another file to compose.yml and declare service there.
+Add override to the service.
 
 
 <br>
@@ -17,7 +13,7 @@ Otherwise, the data in the container is going to be replaced by volume's data.
 
 Check the instructions on handling volumes by using `docker volume --help`.
 
-Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Documentation - https://docs.docker.com/compose/multiple-compose-files/include/.
 ```
 
 </details>
@@ -27,10 +23,7 @@ Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using
 <br>
 
 ```plain
-Use flag -v or --mount when running the container - https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag.
-
-Be cautious about where you attach the volume on the container's filesystem. 
-If the volume isn't empty, all the existing data will be overwritten by the data in the volume.
+include applies recursively so an included Compose file which declares its own include section, results in those other files being included as well.
 ```
 
 </details>

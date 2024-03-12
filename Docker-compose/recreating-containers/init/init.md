@@ -1,1 +1,1 @@
-Build and run a Docker container
+Use compose watch to automatically update services.

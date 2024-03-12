@@ -11,6 +11,31 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
+cat >> /root/data/Dockerfile1 <<EOF
+FROM nginx:alpine
+RUN echo 'Service with variable from $BASE_VAR file with merged $OVERRIDE_VAR file' > /usr/share/nginx/html/index.html
+EOF
+
+docker build --tag app-1 /root/data/Dockerfile1
+
+cat >> /root/compose.yml <<EOF
+services:
+  web-1:
+    image: app-1
+    environment:
+      - BASE_VAR=base
+    ports:
+      - "80:80"
+EOF
+
+cat >> /root/compose.override.yml <<EOF
+services:
+    environment:
+      - OVERRIDE_VAR=base
+EOF
+
+rm -rf /root/data
+
 podman run -d \
   --restart=always \
   --name registry \

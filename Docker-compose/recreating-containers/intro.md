@@ -1,1 +1,1 @@
-Build and run a container with mounted volume.
+Use compose watch to automatically update services.

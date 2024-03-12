@@ -1,6 +1,6 @@
 {
-  "title": "Run container with mounted volume",
-  "description": "Run container with mounted volume",
+  "title": "Use service profiles",
+  "description": "Use service profiles",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,24 +9,19 @@
     },
     "steps": [
       {
-        "title": "Attach volume to the container",
+        "title": "Start services without profiles",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Update data in the container",
+        "title": "Start services with one profile",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },
       {
-        "title": "Run another container",
+        "title": "Start services with all profiles",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
-      },
-      {
-        "title": "Update data on the host system",
-        "text": "step4/text.md",
-        "verify": "step4/verify.sh"
       }
     ],
     "assets": {

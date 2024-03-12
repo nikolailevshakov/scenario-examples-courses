@@ -13,9 +13,9 @@ set -e # exit once any command fails
 {
     date
 
-    docker volume ls | grep sample-volume
-    curl localhost:80 | grep "Welcome to nginx!"
-    cat /var/lib/docker/volumes/sample-volume/_data/index.html | grep "Welcome to nginx!"
+    cat /root/compose.yaml | grep sync
+    cat /root/index.html | grep "Modified from the host"
+    docker compose exec web "cat /index.html" | grep "Modified from the host"
 
 } >> ${LOGFILE} 2>&1
 

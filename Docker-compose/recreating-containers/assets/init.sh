@@ -11,6 +11,21 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
+cat >> /root/index.html <<EOF
+<h1>Hello from the index.html</h1>
+EOF
+
+cat >> /root/Dockerfile <<EOF
+FROM nginx:alpine
+COPY index.html /
+EOF
+
+cat >> /root/compose.yaml <<EOF
+services:
+  web:
+    build: .
+EOF
+
 podman run -d \
   --restart=always \
   --name registry \

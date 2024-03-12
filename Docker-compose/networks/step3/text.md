@@ -1,10 +1,10 @@
-Initiate a container named `sample-app`:
-* utilize the `nginx:alpine` image
-* attach it to the volume `sample-volume`
-* mount this volume to the `/usr/share/nginx/html` directory within the container
-* ensure port `80` on the host is mapped to port `80` within the container
+Update `/root/compose.yml` file:
+- create 2 networks: `network-1` and `network-2`
+- make sure that `web-1` service attached only to `network-1 and `web-2` attached to `network-2`
+- `web-3` service should use image `app-3` and ports `8005:8006` and be attached to the both networks - `network-1` and `network-2`
 
-Send get request to `localhost:80`.
+Try to curl to the web-1 and web-2 from the web-3 service.
+Try to curl to the web-2 and web-3 from the web-1 service
 
 
 <br>
@@ -12,12 +12,7 @@ Send get request to `localhost:80`.
 <br>
 
 ```plain
-If the volume is empty, volume going to be populated by data from container.
-Otherwise, the data in the container is going to be replaced by volume's data.
-
-Check the instructions on handling volumes by using `docker volume --help`.
-
-Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Documentation - https://docs.docker.com/compose/networking/#specify-custom-networks.
 ```
 
 </details>
@@ -27,10 +22,32 @@ Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using
 <br>
 
 ```plain
-Use flag -v or --mount when running the container - https://docs.docker.com/storage/volumes/#choose-the--v-or---mount-flag.
-
-Be cautious about where you attach the volume on the container's filesystem. 
-If the volume isn't empty, all the existing data will be overwritten by the data in the volume.
+The updated /root/compose.yml file:
+services:
+  web-1:
+    image: app-1
+    ports:
+      - "8001:8002"
+    networks:
+      - network-1
+  web-2:
+    image: app-2
+    ports:
+      - "8003:8004"
+    networks:
+      - network-2
+  web-3:
+    image: app-3
+    ports:
+      - "8005:8006"
+    network:
+      - network-1
+      - network-2
+  networks:
+    network-1:
+      driver: custom-driver-1
+    network-2:
+      driver: custom-driver-2
 ```
 
 </details>
@@ -42,25 +59,59 @@ If the volume isn't empty, all the existing data will be overwritten by the data
 
 <br>
 
-Run the container with a mounted volume:
-(specifying `type=volume`isn't required, as it's the default behavior)
+Update root/compose.yml file:
 
 <br>
 
 ```plain
-docker run -d -p 80:80 --mount type=volume,src=sample-volume,target=/usr/share/nginx/html --name sample-app nginx:alpine
+cat >> /root/compose.yml <<EOF
+services:
+  web-1:
+    image: app-1
+    ports:
+      - "8001:8002"
+    networks:
+      - network-1
+  web-2:
+    image: app-2
+    ports:
+      - "8003:8004"
+    networks:
+      - network-2
+  web-3:
+    image: app-3
+    ports:
+      - "8005:8006"
+    network:
+      - network-1
+      - network-2
+  networks:
+    network-1:
+      driver: custom-driver-1
+    network-2:
+      driver: custom-driver-2
+```
 ```{{exec}}
-OR
+
+<br>
+
+Curl to web-1 and web-2 from web-3:
+
+<br>
+
 ```plain
-docker run -d -p 80:80 -v sample-volume:/usr/share/nginx/html --name sample-app nginx:alpine
+docker exec web-3 sh -c "curl web-1:8002" &&
+docker exec web-3 sh -c "curl web-2:8004"
 ```{{exec}}
 
+
 <br>
 
-Send get request to `localhost:80`:
+Curl to web-2 and web-3 from web-1:
 
 <br>
 
 ```plain
-curl localhost:80
+docker exec web-1 sh -c "curl web-2:8004" &&
+docker exec web-1 sh -c "curl web-3:8006"
 ```{{exec}}

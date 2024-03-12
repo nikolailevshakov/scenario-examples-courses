@@ -1,1 +1,1 @@
-Build and run a Docker container
+Run docker compose with secrets.

@@ -1,33 +1,16 @@
-Rewrite `/usr/share/nginx/html/index.html` file with `"<h1>Hello from the updated App</h1>"`.
 
-Send get request to `localhost:80`.
-
-Remove `sample-app` container.
+Add alias to the `web-1` service as `app-1.`
+Curl to the `app-1` from the `web-2` service.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Check the instructions on handling volumes by using "docker volume --help".
-
-Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Documentation - https://docs.docker.com/compose/networking/#link-containers.
 ```
 
 </details>
-
-<br>
-<details><summary>Tip</summary>
-<br>
-
-```plain
-Use > to rewrite contents of the file.
-
-Use the 'curl' command to send a request to the localhost.
-```
-
-</details>
-
 
 <br>
 <details><summary>Solution</summary>
@@ -35,34 +18,32 @@ Use the 'curl' command to send a request to the localhost.
 
 <br>
 
-Rewrite index.html file:
+Modify /root/compose.yml file.
 
 <br>
 
 ```plain
-docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/share/nginx/html/index.html"
+cat >> /root/compose.yml <<EOF
+services:
+  web-1:
+    image: app-1
+    ports:
+      - "8001:8002"
+  web-2:
+    image: app-2
+    ports:
+      - "8003:8004"
+    links:
+      - "web-1:app-1"
+EOF
 ```{{exec}}
 
 <br>
 
-Send get request to `localhost:80`:
+Curl to the app-1 service from web-2:
 
 <br>
 
 ```plain
-curl localhost:80
-```{{exec}}
-
-<br>
-
-Remove the `sample-app` container:
-
-<br>
-
-```plain
-docker rm -f sample-app
-```{{exec}}
-Or
-```plain
-docker stop sample-app && docker rm sample-app
+docker exec web-2 sh -c "curl app-1:8002"
 ```{{exec}}

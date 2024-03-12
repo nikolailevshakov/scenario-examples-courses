@@ -11,6 +11,21 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
+cat >> /root/compose.yaml <<EOF
+services:
+  server:
+    image: nginx:alpine
+    profiles: [server]
+
+  debug:
+    image: nicolaka/netshoot
+    profiles: [debug]
+
+  sample:
+    image: hello-world
+EOF
+
+
 podman run -d \
   --restart=always \
   --name registry \

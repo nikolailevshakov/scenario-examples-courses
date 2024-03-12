@@ -1,25 +1,19 @@
 
-Create docker volume named `sample-volume`.
-
-Initiate a container named `sample-app`:
-* utilize the `nginx:alpine` image
-* attach it to the volume `sample-volume`
-* mount this volume to the `/usr/share/nginx/html` directory within the container
-* ensure port `80` on the host is mapped to port `80` within the container
-
-Send get request to `localhost:80`.
+run docker compose up -d, curl to localhost:80
+create compose.prod.yaml file with environment variables BASE_VAR and OVERRIDE_VAR
+run docker compose up -d with compose.prod.yaml file
+curl to localhost:80
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-If the volume is empty, volume is populated by data from container. 
-Otherwise, the data in the container is going to be replaced by the volume's data.
+By default, Compose reads two files, a compose.yml and an optional compose.override.yml file. By convention, the compose.yml contains your base configuration. The override file can contain configuration overrides for existing services or entirely new services. However, you can provide paths to the files by using flag `-f`.
 
-Check the instructions on handling volumes by using "docker volume --help".
+Any matching fields override the previous file. New values, add to services configuration
 
-Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Documentation - https://docs.docker.com/compose/multiple-compose-files/merge/.
 ```
 
 </details>
@@ -29,11 +23,7 @@ Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using
 <br>
 
 ```plain
-Use --mount or -v flag to mount volume.
-
-Use -d flag to run container in the detached mode.
-
-Use the 'curl' command to send a request to the localhost.
+A common use case for multiple files is changing a development Compose app for a production-like environment (which may be production, staging or CI).
 ```
 
 </details>

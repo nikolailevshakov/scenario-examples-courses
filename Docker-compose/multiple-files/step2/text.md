@@ -1,17 +1,14 @@
-Rewrite `/usr/share/nginx/html/index.html` file with `"<h1>Hello from the updated App</h1>"`.
-
-Send get request to `localhost:80`.
-
-Remove `sample-app` container.
+Using existing compose.yaml file create a new one that extends the service.
+In compose.yml file extend web service with additional environment variable.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Check the instructions on handling volumes by using "docker volume --help".
+Extending services is useful if you have several services that reuse a common set of configuration options. With extends you can define a common set of service options in one place and refer to it from anywhere. You can refer to another Compose file and select a service you want to also use in your own application, with the ability to override some attributes for your own needs.
 
-Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Documentation - https://docs.docker.com/compose/multiple-compose-files/extends/.
 ```
 
 </details>
@@ -21,9 +18,7 @@ Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using
 <br>
 
 ```plain
-Use > to rewrite contents of the file.
-
-Use the 'curl' command to send a request to the localhost.
+Extending an individual service is useful when you have multiple services that have a common configuration
 ```
 
 </details>

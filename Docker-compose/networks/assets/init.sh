@@ -11,6 +11,37 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
+cat >> /root/data/Dockerfile1 <<EOF
+FROM nginx:alpine
+RUN echo 'Hello from the app-1' > /usr/share/nginx/html/index.html
+EOF
+cat >> /root/data/Dockerfile2 <<EOF
+FROM nginx:alpine
+RUN echo 'Hello from the app-2' > /usr/share/nginx/html/index.html
+EOF
+cat >> /root/data/Dockerfile3 <<EOF
+FROM nginx:alpine
+RUN echo 'Hello from the app-3' > /usr/share/nginx/html/index.html
+EOF
+
+docker build --tag app-1 /root/data/Dockerfile1
+docker build --tag app-2 /root/data/Dockerfile2
+docker build --tag app-3 /root/data/Dockerfile3
+
+cat >> /root/compose.yml <<EOF
+services:
+  web-1:
+    image: app-1
+    ports:
+      - "8001:8002"
+  web-2:
+    image: app-2
+    ports:
+      - "8003:8004"
+EOF
+
+rm -rf /root/data
+
 podman run -d \
   --restart=always \
   --name registry \

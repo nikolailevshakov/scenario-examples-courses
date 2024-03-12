@@ -11,6 +11,20 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
+cat >> /root/compose.yaml <<EOF
+services:
+  web:
+    image: alpine
+
+secrets:
+  my_secret:
+    file: ./secret.txt
+EOF
+
+cat >> /root/secret.txt <<EOF
+super-secret-token
+EOF
+
 podman run -d \
   --restart=always \
   --name registry \

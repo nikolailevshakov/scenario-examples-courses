@@ -1,17 +1,13 @@
-Rewrite `/usr/share/nginx/html/index.html` file with `"<h1>Hello from the updated App</h1>"`.
 
-Send get request to `localhost:80`.
-
-Remove `sample-app` container.
+Run services defined in `/root/compose.yml` file enabling server profile.
+Check which services are running.
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-Check the instructions on handling volumes by using "docker volume --help".
-
-Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Documentation - https://docs.docker.com/compose/profiles/#start-specific-profiles.
 ```
 
 </details>
@@ -21,9 +17,7 @@ Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using
 <br>
 
 ```plain
-Use > to rewrite contents of the file.
-
-Use the 'curl' command to send a request to the localhost.
+docker help - to see docker commands.
 ```
 
 </details>
@@ -35,34 +29,21 @@ Use the 'curl' command to send a request to the localhost.
 
 <br>
 
-Rewrite index.html file:
+Run services with server profile:
 
 <br>
 
 ```plain
-docker exec sample-app sh -c "echo '<h1>Hello from the updated App</h1>' > /usr/share/nginx/html/index.html"
+docker compose --profile server up -d
 ```{{exec}}
 
-<br>
-
-Send get request to `localhost:80`:
 
 <br>
 
-```plain
-curl localhost:80
-```{{exec}}
-
-<br>
-
-Remove the `sample-app` container:
+Check which services are running:
 
 <br>
 
 ```plain
-docker rm -f sample-app
-```{{exec}}
-Or
-```plain
-docker stop sample-app && docker rm sample-app
+docker ps
 ```{{exec}}

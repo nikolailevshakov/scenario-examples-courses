@@ -13,9 +13,11 @@ set -e # exit once any command fails
 {
     date
 
-    docker ps | grep sample-app
-    docker volume ls | grep sample-volume
-    curl localhost:80 | grep "Hello from the updated App"
+    cat /root/compose.yml | grep network-1
+    cat /root/compose.yml | grep network-2
+    cat /root/compose.yml | grep web-3
+    docker exec web-3 sh -c "curl web-2:8004" | grep 'Hello from the app-2'
+    docker exec web-1 sh -c "curl web-2:8004" | grep 'Connection refused'
 
 } >> ${LOGFILE} 2>&1
 

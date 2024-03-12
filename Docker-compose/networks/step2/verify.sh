@@ -13,9 +13,8 @@ set -e # exit once any command fails
 {
     date
 
-    docker volume ls | grep sample-volume
-    cat /var/lib/docker/volumes/sample-volume/_data/index.html | grep "Hello from the updated App"
-    if [[ $(docker inspect sample-app 2>&1) == *"No such object"* ]]; then exit 0; else echo "error"; fi
+    cat /root/compose.yml | grep "web-1:app-1"
+    docker exec web-2 sh -c "curl app-1:8002" | grep 'Hello from the app-1'
 
 } >> ${LOGFILE} 2>&1
 

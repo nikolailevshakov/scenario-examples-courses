@@ -1,1 +1,1 @@
-Build and run a container with mounted volume.
+Run docker compose with secrets.

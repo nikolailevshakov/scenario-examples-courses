@@ -1,25 +1,14 @@
 
-Create docker volume named `sample-volume`.
-
-Initiate a container named `sample-app`:
-* utilize the `nginx:alpine` image
-* attach it to the volume `sample-volume`
-* mount this volume to the `/usr/share/nginx/html` directory within the container
-* ensure port `80` on the host is mapped to port `80` within the container
-
-Send get request to `localhost:80`.
+- inject secret `my_secret` as an environment variable `SECRET_TOKEN`
+- run web service
+- check if the secret has been injected
 
 <br>
 <details><summary>Info</summary>
 <br>
 
 ```plain
-If the volume is empty, volume is populated by data from container. 
-Otherwise, the data in the container is going to be replaced by the volume's data.
-
-Check the instructions on handling volumes by using "docker volume --help".
-
-Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using-a-container.
+Documentation - https://docs.docker.com/compose/use-secrets/.
 ```
 
 </details>
@@ -29,11 +18,7 @@ Documentation - https://docs.docker.com/storage/volumes/#populate-a-volume-using
 <br>
 
 ```plain
-Use --mount or -v flag to mount volume.
-
-Use -d flag to run container in the detached mode.
-
-Use the 'curl' command to send a request to the localhost.
+Getting a secret into a container is a two-step process. First, define the secret using the top-level secrets element in your Compose file. Next, update your service definitions to reference the secrets they require with the secrets attribute. Compose grants access to secrets on a per-service basis.
 ```
 
 </details>
@@ -45,35 +30,43 @@ Use the 'curl' command to send a request to the localhost.
 
 <br>
 
-Create volume:
+Update `/root/compose.yaml` file:
 
 <br>
 
 ```plain
-docker volume create sample-volume
+cat >> /root/compose.yaml <<EOF
+services:
+  web:
+    image: alpine
+    environment:
+      SECRET_TOKEN: /run/secrets/my_secret
+    secrets:
+      - my_secret
+secrets:
+  my_secret:
+    file: ./secret.txt
+EOF
 ```{{exec}}
 
 
 <br>
 
-Run the container with the mounted directory:
+Run web service:
 
 <br>
 
 ```plain
-docker run -d -p 80:80 --mount type=volume,src=sample-volume,target=/usr/share/nginx/html --name sample-app nginx:alpine
-```{{exec}}
-OR
-```plain
-docker run -d -p 80:80 -v sample-volume:/usr/share/nginx/html --name sample-app nginx:alpine
+docker compose up -d
 ```{{exec}}
 
+
 <br>
 
-Send get request to `localhost:80`:
+Check if the secret was injected:
 
 <br>
 
 ```plain
-curl localhost:80
+docker compose exec web 'echo $SECRET_TOKEN'
 ```{{exec}}
