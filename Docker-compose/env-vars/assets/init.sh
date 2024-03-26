@@ -11,7 +11,14 @@ rm $0
 mkdir -p /opt/ks
 
 # scenario specific
-cat > /root/compose.yaml <<EOF
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.26.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+
+cat > /root/compose.yml <<EOF
+version: "3"
+
 services:
   web:
     image: nginx:alpine
@@ -27,7 +34,9 @@ cat > /root/precedence/.env <<EOF
 VAR2='variable 2 from .env file'
 EOF
 
-cat > /root/precedence/compose.yaml <<EOF
+cat > /root/precedence/compose.yml <<EOF
+version: "3"
+
 services:
   web2:
     image: nginx:alpine
